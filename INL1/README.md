@@ -1,3 +1,6 @@
+
+## (INL1): Comparison of the performance of different supervised models.
+
 ### Assignment Overview
 
 The assignment covers the assessment of understanding different aspects of applying and evaluating the performances of supervised machine learning algorithms.
