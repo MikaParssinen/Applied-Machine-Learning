@@ -1,5 +1,12 @@
 # Applied Machine Learning
 
+### Useful Links
+- [Canvas](https://canvas.mdu.se/courses/15513)
+
+- [Course literature](https://www.rasa-ai.com/wp-content/uploads/2022/02/Aurélien-Géron-Hands-On-Machine-Learning-with-Scikit-Learn-Keras-and-Tensorflow_-Concepts-Tools-and-Techniques-to-Build-Intelligent-Systems-O’Reilly-Media-2019.pdf)
+
+---
+
 ### Course Content
 - **Module 1**: Learning from Data
 - **Module 2**: Representing Data and Features
@@ -26,5 +33,7 @@
 
 - **Project (PRO1)**  
   *Project Report*  
-  **Credits**: 3  
- 
+  **Credits**: 3
+
+---
+
