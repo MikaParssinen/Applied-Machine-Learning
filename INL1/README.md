@@ -1,48 +1,71 @@
+# Assignment 1: Comparison of the Performance of Different Supervised Models
 
-## (INL1): Comparison of the performance of different supervised models.
+**Due Date**: December 2, 2024, 23:59  
 
-### Assignment Overview
+### Overview
 
-The assignment covers the assessment of understanding different aspects of applying and evaluating the performances of supervised machine learning algorithms.
-
-You are going to use the FIFA 18 players database in this assignment to develop your machine-learning models using **Naive Bayes Classifiers**, **Random Forest**, and **Support Vector Machines** algorithms.
+This assignment evaluates our understanding of applying and comparing the performances of various supervised machine learning algorithms. For this task, you will use the **FIFA 18 players database** to develop and analyze machine learning models, focusing on **Naive Bayes Classifiers**, **Random Forest**, and **Support Vector Machines**.
 
 ---
 
 ### Data Description
 
-The database contains players featured in FIFA 18, with more than 17,000 players listed. Each player has 70+ attributes, including Player and Flag Images, Playing Position Data, and Attributes based on actual data from the latest EA's FIFA 18 game. Attributes include all player-style statistics like **Dribbling**, **Aggression**, **GK Skills**, etc. Additionally, it includes player personal data like **Nationality**, **Photo**, **Club**, **Age**, **Wage**, **Salary**, etc.
+The FIFA 18 player dataset includes information on over **17,000 players**, each with **70+ attributes**. These attributes span:
+- **Player statistics**: Dribbling, Aggression, Goalkeeper Skills, etc.
+- **Personal data**: Nationality, Club, Age, Wage, Salary, and more.
+
+This dataset provides a rich set of features for analyzing and predicting player attributes and capabilities.
 
 To download the dataset, click [here](https://canvas.mdu.se/courses/15513/files/2167729?wrap=1).
 
-In addition to these three algorithms, you may also develop models using other algorithms, such as **Decision Tree** and **k-NN**, though this is not mandatory.
+Additionally, we may explore other models such as **Decision Tree** and **k-Nearest Neighbors (k-NN)**, although this is optional.
 
 ---
 
-### Our Task
+### Your Task
 
-1. Define what problem we are going to solve with the dataset.
-2. Build machine learning models using the suggested algorithms.
-3. Evaluate the performances of the models.
-4. Submit our code and a report.
+1. **Define the Problem**  
+   Specify what problem we are aiming to solve using this dataset (e.g., predicting player value, skill-based role classification, etc.).
+
+2. **Develop Models**  
+   Build machine learning models using the following algorithms:
+   - **Naive Bayes Classifier**
+   - **Random Forest**
+   - **Support Vector Machine (SVM)**
+
+3. **Evaluate Model Performance**  
+   Compare the performance of each model.
+
+4. **Submit Code and Report**  
+   Provide both our code and a report detailing your findings.
 
 ---
 
 ### Report Instructions
 
-- The report should be a maximum of **4 pages**.
-- Write briefly about the implementation approach, including:
+The report should be a maximum of **4 pages** and include the following sections:
 
-  - **Problem formulation**.
-  - How we sample our training and test dataset.
-  - The values of the hyperparameters of each algorithm and our reasons for choosing these values.
-  - Which model selection method we used (such as cross-validation or hold-out) and why.
-  - The evaluation metrics used for comparison and why we choosed them.
-  - A summary of the results, presented using **tables and graphs**.
-  - Discussion on the performances of the algorithms, including limitations of our approach, performance related to chosen hyperparameters, etc.
+- **Problem Formulation**  
+  Briefly describe the problem we are solving and its relevance.
+
+- **Data Sampling**  
+  Outline how we sampled the data for training and testing.
+
+- **Hyperparameter Values**  
+  List the chosen hyperparameters for each algorithm, along with our rationale.
+
+- **Model Selection Method**  
+  Describe the model selection method (e.g., cross-validation or hold-out) and explain why it was chosen.
+
+- **Evaluation Metrics**  
+  Specify the evaluation metrics used to compare models and justify your choices.
+
+- **Summary of Results**  
+  Present results using tables and graphs to highlight key findings.
+
+- **Performance Discussion**  
+  Discuss the performance of the algorithms, including any limitations, the effect of chosen hyperparameters, etc.
+
+**File Naming Convention**: Save both the code and report as `DVA263_INL1_Group_Id`.
 
 ---
-
-### Submission
-
-**Note**: The file name for both the code and report should be `DVA263_INL1_Group_Id`.
