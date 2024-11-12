@@ -470,10 +470,7 @@ TSWLatexianTemp*
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
 
-
 *.pdf
 *.xml
-INL1/INL1/.DS_Store
-INL1/INL1/.idea/INL1.iml
-.DS_Store
+
 
