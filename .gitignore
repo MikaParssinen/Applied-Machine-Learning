@@ -160,8 +160,7 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-<<<<<<< Updated upstream
-=======
+
 INL1/.DS_Store
 
 ## Core latex/pdflatex auxiliary files:
@@ -471,9 +470,10 @@ TSWLatexianTemp*
 # Uncomment the next line to have this generated file ignored.
 #*Notes.bib
 
+
 *.pdf
 *.xml
 INL1/INL1/.DS_Store
 INL1/INL1/.idea/INL1.iml
 .DS_Store
->>>>>>> Stashed changes
+
