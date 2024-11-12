@@ -12,7 +12,7 @@ The assignment assesses your understanding of applying and evaluating the perfor
 
 In marketing, **market segmentation** divides a broad consumer or business market, typically consisting of current and potential customers, into subgroups based on shared characteristics. This dataset provides insights into the behavior of approximately **9,000 active credit cardholders** over the past six months, summarized at the customer level with **18 behavioral variables**.
 
-To download the dataset, click [here](link_to_dataset).
+To download the dataset, click [here](https://canvas.mdu.se/courses/15513/files/2167730?wrap=1).
 
 ---
 
