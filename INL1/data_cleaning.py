@@ -1,6 +1,13 @@
 import pandas as pd
 import re
 
+
+def clean_plus_minus(value):
+    if isinstance(value, str):
+        return re.sub(r'[+-].*', '',value)
+    return value
+
+
 df = pd.read_csv("./FIFA18_players_database/CompleteDataset.csv", low_memory=False) # Open file to clean
 df = df.reset_index()   # Make sure indexes pair with number of rows
 new_df = pd.DataFrame() # Create dataframe for new rows that need to be added to the original dataframe
@@ -23,10 +30,13 @@ df.drop('Unnamed: 0', axis=1, inplace=True)
 df.drop_duplicates(inplace=True)
 df.sort_values(by=['Overall'], inplace=True, ascending=False) # Sort the dataframes by column Overall in
                                                               # descending order
-
+df = df.map(clean_plus_minus) # Remove +, -.
 cols = [0, 5]
 cols.extend(range(12, 46))
 cols.extend([62])
 df = df.iloc[:, cols]                         # Extract only columns of interest
 df = df.sample(frac=1).reset_index(drop=True) # Shuffle the rows of the dataframe
 df.to_csv('./FIFA18_players_database/clean_data.csv', index=False)
+
+
+
