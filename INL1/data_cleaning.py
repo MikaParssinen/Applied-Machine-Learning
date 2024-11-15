@@ -1,4 +1,5 @@
 import pandas as pd
+import re
 
 df = pd.read_csv("./FIFA18_players_database/CompleteDataset.csv", low_memory=False) # Open file to clean
 df = df.reset_index()   # Make sure indexes pair with number of rows
