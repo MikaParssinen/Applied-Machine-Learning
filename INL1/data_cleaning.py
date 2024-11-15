@@ -31,11 +31,17 @@ df.drop_duplicates(inplace=True)
 df.sort_values(by=['Overall'], inplace=True, ascending=False) # Sort the dataframes by column Overall in
                                                               # descending order
 df = df.map(clean_plus_minus) # Remove +, -.
+
 cols = [0, 5]
 cols.extend(range(12, 46))
 cols.extend([62])
 df = df.iloc[:, cols]                         # Extract only columns of interest
 df = df.sample(frac=1).reset_index(drop=True) # Shuffle the rows of the dataframe
+
+cols_to_drop = [col for col in df.columns if 'GK' in col] # Find all GK attributes
+cols_to_drop.extend(['Name', 'Overall'])
+df.drop(cols_to_drop, axis=1, inplace=True) # Remove columns
+
 df.to_csv('./FIFA18_players_database/clean_data.csv', index=False)
 
 
