@@ -41,6 +41,7 @@ df = df.sample(frac=1).reset_index(drop=True) # Shuffle the rows of the datafram
 cols_to_drop = [col for col in df.columns if 'GK' in col] # Find all GK attributes
 cols_to_drop.extend(['Name', 'Overall'])
 df.drop(cols_to_drop, axis=1, inplace=True) # Remove columns
+df['Preferred Positions'] = df['Preferred Positions'].str.strip()  # Remove white spaces
 
 df.to_csv('./FIFA18_players_database/clean_data.csv', index=False)
 
