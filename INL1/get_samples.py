@@ -1,5 +1,6 @@
 import pandas as pd
 
+
 def split_data():
     df = pd.read_csv("./FIFA18_players_database/clean_data.csv", low_memory=False)
     df = df.sample(frac=1).reset_index(drop=True)  # Shuffle the rows of the dataframe
