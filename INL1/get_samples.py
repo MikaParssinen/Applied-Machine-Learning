@@ -1,8 +1,14 @@
 import pandas as pd
 
 
-def split_data():
-    df = pd.read_csv("./FIFA18_players_database/clean_data.csv", low_memory=False)
+def split_data(use_normalized=False):
+    # Choose right file depending on argument
+    file_path = (
+        "./FIFA18_players_database/clean_data_normalized.csv"
+        if use_normalized
+        else "./FIFA18_players_database/clean_data.csv"
+    )
+    df = pd.read_csv(file_path, low_memory=False)
     df = df.sample(frac=1).reset_index(drop=True)  # Shuffle the rows of the dataframe
     X = df.iloc[:, :-1]  # Only save attributes to X
     y = df.iloc[:, -1]  # Only save last column in y
