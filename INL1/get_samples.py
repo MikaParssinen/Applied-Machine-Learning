@@ -8,7 +8,7 @@ def split_data():
     y = df.iloc[:, -1]  # Only save last column in y
 
     num_rows = len(df.index)
-    num_train_rows = int(num_rows * 0.8)
+    num_train_rows = int(num_rows * 0.01)
     num_test_rows = num_rows - num_train_rows
 
     X_train = X.head(num_train_rows)
