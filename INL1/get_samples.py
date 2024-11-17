@@ -16,4 +16,6 @@ def split_data():
     y_train = y.head(num_train_rows)
     y_test = y.tail(num_test_rows)
 
-    return X_train, y_train, X_test, y_test
+    data = (X_train, X_test, y_train, y_test)
+
+    return data
