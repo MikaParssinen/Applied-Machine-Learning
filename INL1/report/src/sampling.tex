@@ -2,7 +2,7 @@
 
 To solve our problem of predicting the preferred position of a football player, we chose to use a subset of columns in the complete dataset. The set of features we took from this dataset was every column that describes a specific ability of a player, such as acceleration. To avoid attribute noise we did not include goalkeeper attributes. Since we exclude the goalkeeper position from our classification problem we won't lose any information by doing so. 
 \par
-Each player has a set of ``preferred positions'' specified in one of the columns in the dataset, this will be the labels we use in training and prediction. We will exclude all rows where ``Preferred Positions'' contains ``GK'' as in goalkeeper. 
+Each player has a set of ``preferred positions'' specified in one of the columns in the dataset, this will be the labels we use in training and prediction. We will exclude all rows where ``Preferred Positions'' contains ``GK'' as in goalkeeper. With the player attributes and the ``Preferred Positions'' column, we can construct our Abstract Base Table.
 \par
 There is one issue with the ``Preferred Positions'' column however, we would like to predict just one position for each player, but the column specifies multiple positions for some players. To deal with this issue we have split each row containing multiple positions into one row for each position. How we do this is illustrated in \autoref{fig:split_rows} below.
 \begin{figure}[!ht]
@@ -29,3 +29,5 @@ There is one issue with the ``Preferred Positions'' column however, we would lik
     \end{tikzpicture}
     \caption{One player with two preferred positions split into two rows}\label{fig:split_rows}
 \end{figure}
+\par
+This split 
