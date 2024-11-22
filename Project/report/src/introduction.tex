@@ -1,11 +1,11 @@
 \section{Introduction}
 
-In todays standard, bottle factories are expected to run and produce bottles at high rates. 
-While maintaining these high rates of production, the quality of the product should be excellent and the occurrence of production defects should be minimal.
-To ensure excellent quality and high production rates, broken and contaminated bottles must be identified, sorted and separated as soon as possible. 
-One way to do this is to monitor the production line, with cameras to identify whenever a bottle is either contaminated or broken. 
-The identification is done by providing the camera feed as input to machine learning algorithms, which has been trained to identify broken and contaminated bottles.
-With this addition to the production line, the company can choose to recycle the broken bottles and clean the contaminated bottles, reducing the factory environmental impact while saving money.
-
+In today’s fast-paced manufacturing environment, bottle factories are under constant pressure to produce pristine glass bottles in large volumes at high speeds, while not making a too big of an impact at the environment. The ever-growing demand for glass bottles \cite{ReturnableBottles} intensifies the challenges faced by these factories, requiring them to maintain efficiency without the cost of quality.  To manage external expectations, the factory must continuously monitor the production line, if they do that correctly they will be able to recognize defect bottles, such as broken and contaminated bottles.  Therefore the factory will find when a bottle is defect and might even why it is defect. Leading the factory to make better decisions for example recycle the broken bottles directly and clean the contaminated bottles to save both money and the environment.
 \par
-This report will include implementation of machine learning algorithms, evaluation and discussion of results, limitations and ethical aspects. 
+Traditionally, factories have a worker that stands beside the production line sometimes during parts of the day or the whole day. The worker manually visually inspect the bottles which not only cost a lot of money in salary but also will bottlenecks the whole production of bottles. A human can simply not keep track of the hundreds of bottles that the factory produces, humans are slow and error prone to this kind of work, while not mentioning how boring the work must be. Therefore this solution dose not satisfy the external expectations.  A different monitor solution must exist.
+\par
+Monitoring with cameras, by incorporating automated monitor systems in the production line, such as cameras. With the camera, the output feed can be used as input data in a machine learning algorithm. These algorithms has been trained to identify with high accuracy defect bottles. They can do that by analyzing the images from the camera therefore, acquiring the features of the bottle and then making a prediction on the status of the bottle if it is whole, broken or contaminated. If it is broken we can identify what kind of feature says it is broken which might lead the factory to why it is broken. Helping the factory to improve the production so less or none bottles are broken. 
+\par
+The approach of monitoring the production line with cameras offers a bunch of environmental and economical benefits. Broken bottles can be sent of to recycling that means the factory will reduce waste and help the environment, contaminated bottles can be cleaned and reused, saving the the factory  money. This surely sound as the best solution.
+\par
+This report will show the implementation of machine learning algorithms, evaluate the effectiveness of identifying defect bottles and also discuss the results of each algorithm. Additionally, mention limitations, challenges and ethical considerations of these technologies.
