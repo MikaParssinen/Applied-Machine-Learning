@@ -7,7 +7,7 @@ Each player has a set of ``preferred positions'' specified in one of the columns
 There is one issue with the ``Preferred Positions'' column however, we would like to predict just one position for each player, but the column specifies multiple positions for some players. To deal with this issue we have split each row containing multiple positions into one row for each position. How we do this is illustrated in \autoref{fig:split_rows} below.
 \begin{figure}[!ht]
     \centering
-    \begin{tikzpicture}[shorten >=0.5pt, node distance=1.5cm, auto]
+    \begin{tikzpicture}[shorten >=0.5pt, node distance=1cm, auto]
         \node (first) {
             \begin{tabular}{|c|c|c|c|}
                 \hline
@@ -30,4 +30,6 @@ There is one issue with the ``Preferred Positions'' column however, we would lik
     \caption{One player with two preferred positions split into two rows}\label{fig:split_rows}
 \end{figure}
 \par
-This split does create another problem when it comes to prediction. The true labels of each players are still a set of labels rather than just one label. 
+This split does create another problem when it comes to prediction. The true label of each player is still a set of labels rather than just one label. Consequence of this is that when predicting a label for a player with multiple preferred positions, we will have multiple identical feature vectors with different labels. This means that for a player with $4$ preferred positions, we will label the $4$ feature vectors correct, at most, $1$ out of $4$ times.
+\par
+To deal with this issue, we chose to just split the training data and keep the test data as is. This means that for a prediction to be accurate, the predicted label needs to be one of the preferred positions. For players with multiple preferred positions, there are multiple correct answers. 
