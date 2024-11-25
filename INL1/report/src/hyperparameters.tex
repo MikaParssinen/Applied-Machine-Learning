@@ -1,35 +1,10 @@
 \section{Hyperparameter selection}
-A Support vector machine (SVM) is a supervised learing algorithm, which is a flexible and a powerful machine learing model.
-SVM models are used for classification and regression tasks and the choice of hyperparameters has a significant impact on performance. The key hyperparameters in a SVM are:
-
-\subsection{Regularization Parameter (\texorpdfstring{\(C\)}{C}) }
-The most critical hyperparameter, also know as \(C\). \(C\) is controlling the trade-off between low training error and low testing error. 
- \(C\) can be any positive number. 
+\subsection{Support vector machine (SVM)}
+A SVM have 2 important hyperparameters, Regularization Parameter (\(C\)) and the choice of Kernel.
+Depending on which kernel function you use there can be important to use other hyperparameters such as Gamma (\(\gamma\)) and Degree.
+Values chosen:
 \begin{itemize}
-    \item \textbf{Large \(C\)}: Model will try to classify all training examples correctly, which comes with the risk of overfitting the model.
-    \item \textbf{Small \(C\)}: Model will allow more misclassifications, which can help in achieving a smoother decision boundary and reduce the risk of overfitting.
+    \item \textbf{\(\boldsymbol{C}\)}:
+    \item \textbf{Kernel}:
 \end{itemize}
-
-\subsection{Kernel}
-The kernel is a mathematical function, it transforms the input data into the required form. Making sure that the SVM can find an optimal boundary in higher-dimensional space.
-There exists a lot of different kernels, the most common are and when to use them:
-\begin{itemize}
-    \item \textbf{Linear}: If the data is linear. 
-    \item \textbf{Polynomial}: If the data is non-linear but separable with a polynomial decision boundary.
-    \item \textbf{Radial basis function (RBF)}: Useful when the relationship between class labels and features are not linear.
-    \item \textbf{Sigmoid}: Mostly common in neural networks, but can be applied in SVMs.
-\end{itemize}
-
-\subsection{Gamma (\texorpdfstring{\(\gamma\)}{gamma})}
-When using a non-linear kernel such as (RBF), gamma is used to tune the behavior of the decision bound.
-\begin{itemize}
-    \item \textbf{Large \(\gamma\)}: Influence area is small, the boundary is complex and the model is usually overfitted.
-    \item \textbf{Small \(\gamma\)}: Influence area is large, the boundary is simple and the model is usually underfitted.
-\end{itemize}
-
-\subsection{Degree}
-When using the Polynomial kernel function, the hyperparameter \textbf{degree} is important to tune. It, along with gamma, changes the decision boundary but only when using a polynomial kernel.
-\begin{itemize}
-    \item \textbf{Large degree}: Points has small influence, decision boundary is complex and tightfitting the risk of overfitting is great.
-    \item \textbf{Small degree}: Points has large influence, decision boundary is smooth and simple, the risk of underfitting is great.
-\end{itemize}
+ 
