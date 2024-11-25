@@ -17,7 +17,7 @@ def run_naive_bayes(X_train, X_test, y_train, naive_bayes_model):
     elif naive_bayes_model == 'complement':
         model = ComplementNB()
     elif naive_bayes_model == 'multinomial':
-        model = MultinomialNB(alpha=0.0, force_alpha=True)
+        model = MultinomialNB()
     else:
         model = BernoulliNB()
     model.fit(X_train, y_train)
