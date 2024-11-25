@@ -1,12 +1,10 @@
 import pandas as pd
 import re
 
-
 def clean_plus_minus(value):
     if isinstance(value, str):
         return re.sub(r'[+-].*', '',value)
     return value
-
 
 df = pd.read_csv("./FIFA18_players_database/CompleteDataset.csv", low_memory=False) # Open file to clean
 df = df.reset_index()   # Make sure indexes pair with number of rows
