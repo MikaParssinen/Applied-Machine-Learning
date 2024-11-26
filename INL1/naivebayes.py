@@ -1,7 +1,4 @@
 from sklearn.naive_bayes import GaussianNB
-from sklearn.naive_bayes import ComplementNB
-from sklearn.naive_bayes import MultinomialNB
-from sklearn.naive_bayes import BernoulliNB
 
 def accuracy_scorer(y_test, y_pred):
     length = len(y_test)
