@@ -1,4 +1,7 @@
 \section{Hyperparameter selection}
+
+Different classifiers use different hyperparameters in their model, some have many different hyperparameters and some have none at all. This section explains choices made for each classifier when it comes to hyperparameters.
+
 \subsection{Support vector machine (SVM)}
 An SVM has two important hyperparameters: the Regularization Parameter (\(C\)) and the choice of Kernel. 
 Depending on the kernel function used, other hyperparameters, such as Gamma (\(\gamma\))) and Degree, may also need to be tuned.
@@ -8,5 +11,9 @@ Depending on the kernel function used, other hyperparameters, such as Gamma (\(\
     \item \textbf{Kernel}:
 \end{itemize}
 
+\subsection{Naive bayes classifiers}
+Not all naive bayes classifiers have a hyperparameter, but some have a smoothing parameter $\alpha$. The values for $\alpha$ have been chosen by performing a grid search for classifiers with this hyperparameter. Since bernoulli naive bayes assumes all features being binary/boolean, a binarization threshold does also need to be chosen. 
+\par
+That being said, the classifier most well suited for our purpose is the Gaussian naive bayes classifier. This is because features can be assumed coming from a normal (Gaussian) distribution. The Gaussian naive bayes classifier do not have any hyperparameters, so we have no hyperparameter to tune. 
 
- 
+\subsection{Random forest}
