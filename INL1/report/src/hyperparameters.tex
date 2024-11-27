@@ -1,15 +1,22 @@
 \section{Hyperparameter selection}
-
-Different classifiers use different hyperparameters in their model, some have many different hyperparameters and some have none at all. This section explains choices made for each classifier when it comes to hyperparameters.
+Different classifiers use different hyperparameters in their model, some have many different hyperparameters and some have none at all. 
+This section explains choices made for each classifier when it comes to hyperparameters.
 
 \subsection{Support vector machine (SVM)}
-A SVM have 2 important hyperparameters, Regularization Parameter (\(C\)) and the choice of Kernel.
-Depending on which kernel function you use there can be important to use other hyperparameters such as Gamma (\(\gamma\)) and Degree.
-Values chosen:
+
+An SVM has several hyperparameters, but two of the most important are the Regularization Parameter 
+(\(C\)) and the choice of Kernel. Depending on the kernel function used, other hyperparameters, such as Gamma 
+(\(\gamma\)) and Degree, may also need to be tuned. Values chosen:
+
 \begin{itemize}
-    \item \textbf{\(\boldsymbol{C}\)}:
-    \item \textbf{Kernel}:
+    \item \textbf{\(\boldsymbol{C}\)}: 100
+    \item \textbf{Kernel}: Radial Basis function (RBF)
+    \item \textbf{\(\gamma\)}: 0.03571429
 \end{itemize}
+We utilized Grid Search to explore a wide range of hyperparameter values and then applied cross-validation to identify the model that achieved the best accuracy. 
+The RBF kernel effectively captures non-linear relationships within the data, making it perfect for handling complex patterns. Difference in accuracy compared to the linear kernel was marginal but the runtime when using RBF was significant faster.
+The regularization parameter \(C = 100\) increases the complexity of the decision boundary by dealing a higher penalty on misclassifications, ensuring that the model prioritizes accuracy on the training data. This hyperparameter played a crucial role in increasing the model's performance, as it provided a large boost in accuracy. 
+Additionally, the parameter \(\gamma = \frac{1}{28} = 0.03571429\), comes from the formula \(\gamma = \frac{1}{d}\), where \(d\) represents the number of features in the dataset.
 
 \subsection{Naive bayes classifiers}
 Not all naive bayes classifiers have a hyperparameter, but some have a smoothing parameter $\alpha$. The values for $\alpha$ have been chosen by performing a grid search for classifiers with this hyperparameter. Since bernoulli naive bayes assumes all features being binary/boolean, a binarization threshold does also need to be chosen. 
