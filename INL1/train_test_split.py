@@ -1,6 +1,6 @@
 import pandas as pd
 import re
-
+# TODO: Make a library of each function.
 def clean_plus_minus(value):
     if isinstance(value, str):
         return re.sub(r'[+-].*', '',value)
