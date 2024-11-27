@@ -7,5 +7,7 @@ To get better accuracy in our classifiers, normalization and removal of outliers
 \subsection{Naive bayes classifiers}
 
 The naive bayes classifiers assume that each feature is independent of eachother. This means that the model will work best with the data not being normalized. We would gain no more information by normalizing the data and a consequence of normalizing could be that we lose information.
+\par
+Since we assume that the data comes from a normal distribution, we can remove outliers from the bottom and the top of the distribution. The percentiles chosen are $0.01$ and $0.99$. Removing these outliers improves the accuracy of the model slightly, further going to the $0.05$- and $0.95$-percentiles reduces the accuracy significantly.
 
 \subsection{Random forest}
