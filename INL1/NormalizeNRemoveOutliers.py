@@ -25,9 +25,11 @@ numeric_columns = df.select_dtypes(include='number').columns
 # Remove all outliers
 df_cleaned = remove_outliers_iqr(df, numeric_columns)
 
+df_cleaned.to_csv('./FIFA18_players_database/clean_data_W_O_outliers.csv', index=False)
+
 # Normalize with MinMaxScaler
 scaler = MinMaxScaler()
 df_cleaned[numeric_columns] = scaler.fit_transform(df_cleaned[numeric_columns])
 
-df_cleaned.to_csv('./FIFA18_players_database/clean_data_normalized.csv', index=False)
+df_cleaned.to_csv('./FIFA18_players_database/clean_data_normalized_W_O_outliers.csv', index=False)
 
