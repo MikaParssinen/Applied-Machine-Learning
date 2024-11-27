@@ -3,9 +3,10 @@
 To get better accuracy in our classifiers, normalization and removal of outliers is sometimes needed. This section explains the choice of normalizing or not for each model, as well as how we deal with outliers. We also explain which normalization technique we use for the models that we do normalize. 
 
 \subsection{Support vector machine (SVM)}
-
+SVM relies on the distance between data points to define the decision boundary, making it highly sensitive to the scale and distribution of the features. As a result, normalization of the data is crucial before applying SVM, as it ensures that all features contribute equally to the distance metric.
+Additionally, outliers can significantly impact performance, as their greater distance from other points can falsify the decision boundary, making it challenging to correctly classify them or other points near them.
 \subsection{Naive bayes classifiers}
 
-The naive bayes classifiers assume that each feature is independent of eachother. This means that the model will work best with the data not being normalized. We would gain no more information by normalizing the data and a consequence of normalizing could be that we lose information.
+The naive bayes classifiers assume that each feature is independent of each other. This means that the model will work best with the data not being normalized. We would gain no more information by normalizing the data and a consequence of normalizing could be that we lose information.
 
 \subsection{Random forest}
