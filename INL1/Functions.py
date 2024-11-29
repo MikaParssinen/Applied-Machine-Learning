@@ -89,8 +89,8 @@ def clean_plus_minus(value):
 
 # Remove unwanted columns and rows
 def engineer_features(df):
-    cols = list(range(13, 46))
-    cols.append(63)
+    cols = list(range(14, 48))
+    cols.append(64)
     df = df.iloc[:, cols]  # Extract only columns of interest
     df = df[~df["Preferred Positions"].str.contains("GK")]  # Remove all goalkeeper rows
     cols_to_drop = [col for col in df.columns if "GK" in col]  # Find all GK attributes
@@ -117,11 +117,9 @@ def run_SVM_classifier(kernel, C, X_train, X_test, y_train):
     return y_test_pred, y_train_pred
 
 def run_RF(n_est, X_train, X_test, y_train):
-    # Make and train Random Forest
-    rf_classifier = RandomForestClassifier(n_estimators=n_est) # TODO: Add more hyperparameters
+    rf_classifier = RandomForestClassifier(n_estimators=n_est)  # TODO: Add more hyperparameters
     rf_classifier.fit(X_train, y_train)
 
-    # Predict on Test and Train data
     y_test_pred = rf_classifier.predict(X_test)
     y_train_pred = rf_classifier.predict(X_train)
 
