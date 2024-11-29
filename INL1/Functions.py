@@ -89,8 +89,8 @@ def clean_plus_minus(value):
 
 # Remove unwanted columns and rows
 def engineer_features(df):
-    cols = list(range(14, 48))
-    cols.append(64)
+    cols = list(range(13, 46))
+    cols.append(63)
     df = df.iloc[:, cols]  # Extract only columns of interest
     df = df[~df["Preferred Positions"].str.contains("GK")]  # Remove all goalkeeper rows
     cols_to_drop = [col for col in df.columns if "GK" in col]  # Find all GK attributes
