@@ -1,9 +1,13 @@
 # Library for all the functions.
 import pandas as pd
 import re
+
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.preprocessing import StandardScaler
+from sklearn.svm import SVC
+
 
 # Normalize function
 def normalize(df, method):
@@ -103,3 +107,21 @@ def run_naive_bayes(X_train, X_test, y_train):
     model.fit(X_train, y_train)
     y_pred = model.predict(X_test)
     return y_pred
+
+def run_SVM_classifier(kernel, C, X_train, X_test, y_train):
+    svm_classifier = SVC(kernel=kernel, C=C, gamma='auto')
+    svm_classifier.fit(X_train, y_train)
+    y_test_pred = svm_classifier.predict(X_test)
+    y_train_pred = svm_classifier.predict(X_train)
+
+    return y_test_pred, y_train_pred
+
+# TODO: Add more hyperparameters
+def run_RF(n_est, X_train, X_test, y_train):
+    rf_classifier = RandomForestClassifier(n_estimators=n_est)
+    rf_classifier.fit(X_train, y_train)
+
+    y_test_pred = rf_classifier.predict(X_test)
+    y_train_pred = rf_classifier.predict(X_train)
+
+    return y_test_pred, y_train_pred
