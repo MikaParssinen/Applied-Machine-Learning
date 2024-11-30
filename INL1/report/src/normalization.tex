@@ -12,3 +12,6 @@ The naive bayes classifiers assume that each feature is independent of eachother
 Since we assume that the data comes from a normal distribution, we can remove outliers from the bottom and the top of the distribution. The percentiles chosen are $0.01$ and $0.99$. Removing these outliers improves the accuracy of the model slightly, further going to the $0.05$- and $0.95$-percentiles reduces the accuracy significantly.
 
 \subsection{Random forest}
+Random Forest is an ensemble method that builds decision trees using feature thresholds, making normalization unnecessary.
+It is also robust to outliers since the impact of a single outlier is thinned out across many trees.
+However, if there are frequent extreme outliers in the dataset, they may introduce noise and distort the data. Then, removing outliers could be beneficial for the performance of the model.
