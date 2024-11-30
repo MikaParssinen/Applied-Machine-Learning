@@ -1,1 +1,13 @@
 \section{Result}
+
+After defining and engineering our feature vectors we ran tests on normalized versus not normalized data as well as testing with removing outliers. We then tuned our hyperparameters for each classifier before doing cross-validation to choose the best model. These are our results:
+\begin{figure}[!ht]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        \rowcolor{gray!50}
+        & Gaussian Naive Bayes & Random Forest & Support Vector Machine \\ \hline
+        Test accuracy & $0.6468$ & $0.7516$ & $0.3015$ \\ \hline
+        Training accuracy & $0.3704$ & $0.5725$ & $0.5785$ \\ \hline
+    \end{tabular}
+\end{figure}
