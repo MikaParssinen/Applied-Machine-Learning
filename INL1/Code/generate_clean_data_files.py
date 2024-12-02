@@ -9,7 +9,7 @@ def clean_plus_minus(value):
     return value
 
 pd.options.mode.copy_on_write = True  # Enable copy on write in pandas
-df = pd.read_csv("./FIFA18_players_database/CompleteDataset.csv", low_memory=False)  # Open file to clean
+df = pd.read_csv("../FIFA18_players_database/CompleteDataset.csv", low_memory=False)  # Open file to clean
 df = df.reset_index()  # Make sure indexes pair with number of rows
 
 cols = list(range(14, 48))
