@@ -146,14 +146,14 @@ def run_SVM_classifier(X_train, X_test, y_train, kernel, c, retClass):
     else:
         return y_test_pred, y_train_pred
 
-def run_RF(n_est, X_train, X_test, y_train):
-    rf_classifier = RandomForestClassifier(n_estimators=n_est, min_samples_split=10, min_samples_leaf=4)
+def run_RF(X_train, X_test, y_train, nEst, min_samples_split, min_samples_leaf, max_features, max_depth , retClass):
+    rf_classifier = RandomForestClassifier(n_estimators=nEst, min_samples_split=min_samples_split, min_samples_leaf=min_samples_leaf, max_features=max_features, max_depth=max_depth)
     rf_classifier.fit(X_train, y_train)
-
     y_test_pred = rf_classifier.predict(X_test)
     y_train_pred = rf_classifier.predict(X_train)
 
+    if retClass:
+        return y_test_pred, y_train_pred, rf_classifier
+    else:
+        return y_test_pred, y_train_pred
 
-
-
-    return y_test_pred, y_train_pred
