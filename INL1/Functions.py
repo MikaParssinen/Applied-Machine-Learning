@@ -38,21 +38,24 @@ def remove_outliers(df, percentile):
         new_df = new_df[new_df[col] >= q_l]
     return new_df
 
-def remove_outliers_iqr(df):
-    new_df = df.copy()
-    cols = new_df.columns.tolist()
-    cols.remove("Preferred Positions")
-    for col in cols:
-        Q1 = new_df[col].quantile(0.25)  # First quantile
-        Q3 = new_df[col].quantile(0.75)  # Third quantile
-        IQR = Q3 - Q1  # IQR distance
 
-        # Identify limits
+def remove_outliers_iqr(df):
+    # Find numeric columns only
+    numeric_cols = df.select_dtypes(include=['number']).columns
+    new_df = df.copy()
+
+    for col in numeric_cols:
+        Q1 = new_df[col].quantile(0.25)
+        Q3 = new_df[col].quantile(0.75)
+        IQR = Q3 - Q1
+
+        # Define the bounds for detecting outliers
         lower_bound = Q1 - 1.5 * IQR
         upper_bound = Q3 + 1.5 * IQR
 
-        # Filter
+        # Filter out the outliers
         new_df = new_df[(new_df[col] >= lower_bound) & (new_df[col] <= upper_bound)]
+
     return new_df
 
 # Function to split data into train and test sets
@@ -131,6 +134,7 @@ def run_naive_bayes(X_train, X_test, y_train):
     y_train_pred = model.predict(X_train)
     return y_test_pred, y_train_pred
 
+# Function to run SVM
 def run_SVM_classifier(X_train, X_test, y_train, kernel, c, retClass):
     svm_classifier = SVC(kernel=kernel, C=c, gamma='auto')
     svm_classifier.fit(X_train, y_train)
