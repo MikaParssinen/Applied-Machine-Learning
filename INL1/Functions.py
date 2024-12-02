@@ -10,13 +10,18 @@ from sklearn.svm import SVC
 
 
 # Normalize function
-def normalize(df, method):
+def normalize(df, method, complete_data):
     if method == 'minmax':
         scalar = MinMaxScaler()
     else:
         scalar = StandardScaler()
-    new_df = scalar.fit_transform(df)
-    return new_df
+
+    if complete_data:
+        df.iloc[:, :-1] = scalar.fit_transform(df.iloc[:, :-1])
+        return df
+    else:
+        new_df = scalar.fit_transform(df)
+        return new_df
 
 # Outlier removal function
 def remove_outliers(df, percentile):
@@ -126,13 +131,16 @@ def run_naive_bayes(X_train, X_test, y_train):
     y_train_pred = model.predict(X_train)
     return y_test_pred, y_train_pred
 
-def run_SVM_classifier(X_train, X_test, y_train):
-    svm_classifier = SVC(kernel='rbf', C=100, gamma='auto')
+def run_SVM_classifier(X_train, X_test, y_train, kernel, c, retClass):
+    svm_classifier = SVC(kernel=kernel, C=c, gamma='auto')
     svm_classifier.fit(X_train, y_train)
     y_test_pred = svm_classifier.predict(X_test)
     y_train_pred = svm_classifier.predict(X_train)
 
-    return y_test_pred, y_train_pred
+    if retClass:
+        return y_test_pred, y_train_pred, svm_classifier
+    else:
+        return y_test_pred, y_train_pred
 
 # TODO: Add more hyperparameters
 def run_RF(n_est, X_train, X_test, y_train):
@@ -141,5 +149,8 @@ def run_RF(n_est, X_train, X_test, y_train):
 
     y_test_pred = rf_classifier.predict(X_test)
     y_train_pred = rf_classifier.predict(X_train)
+
+
+
 
     return y_test_pred, y_train_pred
