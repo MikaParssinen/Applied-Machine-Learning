@@ -8,5 +8,14 @@ NOTES:
     \item Naive bayes is fast to learn and predict, but the model is not as accurate as random forest. The other models are however, much more computationally expensive. 
     \item Result is limited by computational power and time.
     \item The provided dataset is only for male fotball players.
-
 \end{itemize}
+
+
+Due to our limitation in terms of computational power we cannot scale the models RF and the SVM as we want. 
+Example the SVM model takes very long time to train because it calculates a lot of distances, which takes a lot of computational power. 
+Because of this we could not train the SVM on a large datasets, we wanted to use SMOTE to expand the dataset to increase the underrepresented classes.
+But doing so made the calculations extremely slow and the runtime very high. An other example is that RF has the hyperparameter n\_estimators which decides how many trees the forrest has, the larger number the better. 
+But increasing the numbers of trees had a huge toll on our performance we could simply not run and test high values of estimators to see which value is the best for us, so we had to settle where our computers could handle the computation.
+
+
+
