@@ -146,7 +146,6 @@ def run_SVM_classifier(X_train, X_test, y_train, kernel, c, retClass):
     else:
         return y_test_pred, y_train_pred
 
-# TODO: Add more hyperparameters
 def run_RF(n_est, X_train, X_test, y_train):
     rf_classifier = RandomForestClassifier(n_estimators=n_est, min_samples_split=10, min_samples_leaf=4)
     rf_classifier.fit(X_train, y_train)
