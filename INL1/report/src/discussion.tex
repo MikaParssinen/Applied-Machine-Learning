@@ -1,7 +1,12 @@
 \section{Discussion}
 
-By used methods of tuning hyperparameters, normalizing data, cross-validation and feature engineering, it can be concluded that from our experiments that Support Vector Machines offer the best models for our problem. 
+By used methods of tuning hyperparameters, normalizing data, cross-validation and feature engineering, it can be concluded that from our experiments that Support Vector Machines offer the best models for our problem. The naive bayes classifier is the fastest to train and predict, but the model is not as accurate as the random forest and support vector machine. 
 \par
+Due to our limitation in terms of computational power we cannot scale the models RF and the SVM as we want. 
+Example the SVM model takes very long time to train because it calculates a lot of distances, which takes a lot of computational power. 
+Because of this we could not train the SVM on a large datasets, we wanted to use SMOTE to expand the dataset to increase the underrepresented classes.
+But doing so made the calculations extremely slow and the runtime very high. An other example is that RF has the hyperparameter n\_estimators which decides how many trees the forrest has, the larger number the better. 
+But increasing the numbers of trees had a huge toll on our performance we could simply not run and test high values of estimators to see which value is the best for us, so we had to settle where our computers could handle the computation.
 Even by allowing for labelling a subset of the preferred positions, we do not get the accuracy above $80\%$. By this, we conclude that the feature vectors are not distinct enough for each each position to create a predictive model that can accurately predict the preferred position of a player. That each player have multiple preferred positions also potentially creates noise, human inspection of the data indicates no clear pattern of why a player prefers multiple positions.
 \par
 Another problem with the dataset is that there are no attributes that indicates a reason for why a player prefers the left, center or right side of the field. Having a feature that indicates if a player is left-footed or right-footed would play a significant role of which side of the field the player prefers to play on. This is another limitation of the dataset that we have to work with. 
@@ -9,7 +14,6 @@ Another problem with the dataset is that there are no attributes that indicates 
 NOTES:
 \begin{itemize}
     \item Synthetic data, the data is based on a mix of opinions and real-world data. There is no concrete way to measure the dribbling skills of a football player. Also with game balancing.
-    \item Naive bayes is fast to learn and predict, but the model is not as accurate as random forest. The other models are however, much more computationally expensive. 
     \item The provided dataset is only for male fotball players.
 \end{itemize}
 
