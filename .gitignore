@@ -473,4 +473,4 @@ TSWLatexianTemp*
 *.pdf
 *.xml
 
-
+.idea
