@@ -9,4 +9,3 @@ df.drop_duplicates(inplace=True)
 df.dropna(inplace=True)
 
 df.to_csv("./Dataset/Clean.csv", index=False)
-
