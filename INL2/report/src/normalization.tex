@@ -1,1 +1,5 @@
 \section{Normalization and outlier removal}
+
+The unsupervised learning algorithms we use to segment customers are Hierarchical Clustering and \linebreak DBSCAN. These clustering algorithms divide the data into clusters using distance functions. To make the distance functions fairly assess the distance between the data points, it is important that each feature of the data is normalized. The reason for this is because the distance functions are sensitive to the scale of each feature. If the features are not normalized, the distance functions will be biased towards the features with larger difference in values. 
+\par 
+Normalizing our data makes each feature contribute to the calculated distance equally in terms of scaling. The method we use is called standardization, where we subtract the mean of the feature from each value and divide by the standard deviation of the feature. This way, the features will have a mean of $0$ and a standard deviation of $1$.
