@@ -12,6 +12,7 @@ def standardize(df):
     return scaled_df
 
 
+# Calculate the dunn index of clusters
 def dunn_index(data, labels):
     unique_clusters = np.unique(labels)
     n_clusters = len(unique_clusters)
@@ -36,7 +37,8 @@ def dunn_index(data, labels):
         for j, cluster_j in enumerate(unique_clusters):
             if i < j:  # Avoid duplicate computations
                 points_i = data[labels == cluster_i]
-                points_j = data[labels == cluster_j] 
+                points_j = data[labels == cluster_j]
                 inter_cluster_dist.append(np.min(cdist(points_i, points_j)))
 
     return np.min(inter_cluster_dist) / np.max(intra_cluster_dist)
+
