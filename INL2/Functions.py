@@ -1,9 +1,12 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import AgglomerativeClustering
+from sklearn.metrics import silhouette_score
 
 
 # Standardize function
@@ -101,3 +104,27 @@ def tsne(df, dim):
     tsne_df['Cluster'] = df['Cluster']
 
     return tsne_df
+
+def generate_silhouette_scores(n_list: list[int], df: pd.DataFrame, model: str) -> list[float]:
+    silhouette_scores = []
+    for n in n_list:
+        if model == "agglomerative":
+            silhouette_scores.append(
+                silhouette_score(df, AgglomerativeClustering(n_clusters=n).fit_predict(df)))
+        else:
+            pass
+    return silhouette_scores
+
+def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=None):
+    if size:
+        plt.figure(figsize=size)
+    if title:
+        plt.title(title)
+    plt.bar(x_values, y_values)
+    if x_label:
+        plt.xlabel(x_label, fontsize=10)
+    if y_label:
+        plt.ylabel(y_label, fontsize=10)
+    plt.show()
+
+
