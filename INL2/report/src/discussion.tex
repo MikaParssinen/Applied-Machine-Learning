@@ -1,11 +1,89 @@
 \section{Discussion}
 
-\subsection{Cluster description}
-Before the discussion of we need to clarify what each of the cluster contains and means. Every 
+\subsection{Cluster Description}
+Before discussing the results, we need to clarify what each of the clusters contains and represents. Each cluster reflects distinct customer behavior based on their usage of credit and spending patterns. The clusters are described as follows:
 
-Cluster 1
-Cluster 2
-Cluster 3
-Cluster 4
-Cluster 5
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Feature} & \textbf{Cluster 1} & \textbf{Interpretation} \\ \midrule
+Balance & 587.98 & Lower balance \\
+Purchases & 1203.26 & Low purchase activity \\
+One-Off Purchases & 542.97 & Moderate \\
+Installments Purchases & 660.38 & Small but positive \\
+Cash Advance & 69.96 & Low cash advance \\
+Credit Limit & 4157.06 & Moderate credit limit \\
+Payments & 1269.62 & Slightly below average \\
+Full Payment Percentage & 0.35 & Likely to pay full amount \\ \bottomrule
+\end{tabular}
+\caption{Cluster 1: Medium activity, low spenders with higher full payment rate}
+\end{table}
 
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Feature} & \textbf{Cluster 2} & \textbf{Interpretation} \\ \midrule
+Balance & 4812.38 & Higher balance \\
+Purchases & 27505.34 & High purchase activity \\
+One-Off Purchases & 22417.45 & Very high \\
+Installments Purchases & 5087.89 & Very high \\
+Cash Advance & 1617.79 & Positive cash advances \\
+Credit Limit & 16000.00 & Very high credit limit \\
+Payments & 28138.98 & High payments \\
+Full Payment Percentage & 0.53 & Likely to pay full amount \\ \bottomrule
+\end{tabular}
+\caption{Cluster 2: High spenders with large balances and high full payment rate}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Feature} & \textbf{Cluster 3} & \textbf{Interpretation} \\ \midrule
+Balance & 3093.29 & Above average \\
+Purchases & 5059.38 & Moderate \\
+One-Off Purchases & 3176.73 & Moderate \\
+Installments Purchases & 1883.64 & Moderate \\
+Cash Advance & 427.99 & Slightly negative \\
+Credit Limit & 8084.07 & Moderate \\
+Payments & 4411.09 & Moderate \\
+Full Payment Percentage & 0.18 & Low \\ \bottomrule
+\end{tabular}
+\caption{Cluster 3: Moderate credit usage with low full payment rate}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Feature} & \textbf{Cluster 4} & \textbf{Interpretation} \\ \midrule
+Balance & 3753.04 & Above average \\
+Purchases & 536.14 & Lower than average \\
+One-Off Purchases & 311.82 & Low \\
+Installments Purchases & 224.39 & Low \\
+Cash Advance & 3412.73 & High cash advance activity \\
+Credit Limit & 6304.57 & Moderate \\
+Payments & 2908.71 & Low payments \\
+Full Payment Percentage & 0.04 & Low full payment \\ \bottomrule
+\end{tabular}
+\caption{Cluster 4: Customers with low purchases, high cash advances, and low full payment}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Feature} & \textbf{Cluster 5} & \textbf{Interpretation} \\ \midrule
+Balance & 950.55 & Lower than average \\
+Purchases & 376.41 & Low \\
+One-Off Purchases & 252.25 & Low \\
+Installments Purchases & 124.60 & Low \\
+Cash Advance & 503.19 & Minimal cash advance \\
+Credit Limit & 3310.72 & Low credit limit \\
+Payments & 1011.16 & Low \\
+Full Payment Percentage & 0.10 & Low \\ \bottomrule
+\end{tabular}
+\caption{Cluster 5: Low usage of credit with minimal purchases or payments}
+\end{table}
