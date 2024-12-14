@@ -1,8 +1,21 @@
 \section{Result}
-3D PCA visualization of the clusters:
+Visualization of the clusters:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.7\textwidth]{src/figs/3d_PCA_HC.png} 
-    \caption{3D PCA visualization of clusters}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/figs/3d_PCA_HC.png}
+        \caption{3D PCA visualization of clusters}
+        \label{fig:pca}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_PCA_HC.png}} % Adjusts the image height
+        \caption{3D t-SNE visualization of clusters}
+        \label{fig:tsne}
+    \end{subfigure}
+    \caption{Comparison of clustering visualizations: 3D (left) and 2D (right).}
+    \label{fig:comparison}
 \end{figure}
