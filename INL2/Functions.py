@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 from scipy.spatial.distance import cdist
+from sklearn.decomposition import PCA
+from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
 
 
@@ -42,3 +44,60 @@ def dunn_index(data, labels):
 
     return np.min(inter_cluster_dist) / np.max(intra_cluster_dist)
 
+
+def remove_outliers_iqr(df, bound):
+    # Find numeric columns only
+    numeric_cols = df.select_dtypes(include=['number']).columns
+    new_df = df.copy()
+
+    for col in numeric_cols:
+        Q1 = new_df[col].quantile(bound)
+        Q3 = new_df[col].quantile(1.00 - bound)
+        IQR = Q3 - Q1
+
+        # Define the bounds for detecting outliers
+        lower_bound = Q1 - 1.5 * IQR
+        upper_bound = Q3 + 1.5 * IQR
+
+        # Filter out the outliers
+        new_df = new_df[(new_df[col] >= lower_bound) & (new_df[col] <= upper_bound)]
+
+    return new_df
+
+
+def pca(df, dim):
+    if dim == 2:
+        n_component = 2
+        columns = ['PC1', 'PC2']
+    elif dim == 3:
+        n_component = 3
+        columns = ['PC1', 'PC2', 'PC3']
+    else:
+        raise Exception('Choose a valid dimension')
+
+    pca = PCA(n_component)
+    pca_components = pca.fit_transform(df.drop(columns=['Cluster']))
+    pca_df = pd.DataFrame(pca_components, columns=columns)
+    pca_df['Cluster'] = df['Cluster']  # Add the cluster labels
+
+    return pca_df
+
+
+def tsne(df, dim):
+    if dim == 2:
+        n_component = 2
+        columns = ['TSNE1', 'TSNE2']
+    elif dim == 3:
+        n_component = 3
+        columns = ['TSNE1', 'TSNE2', 'TSNE3']
+    else:
+        raise Exception('Choose a valid dimension')
+
+    tsne = TSNE(n_components=n_component, perplexity=30, random_state=42)
+    tsne_results = tsne.fit_transform(df.drop(columns=['Cluster']))
+
+    # Convert results into a DataFrame
+    tsne_df = pd.DataFrame(tsne_results, columns=columns)
+    tsne_df['Cluster'] = df['Cluster']
+
+    return tsne_df
