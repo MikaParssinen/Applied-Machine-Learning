@@ -3,6 +3,8 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+*.idea/Applied-Machine-Learning.iml
+
 # C extensions
 *.so
 
@@ -472,3 +474,4 @@ TSWLatexianTemp*
 
 *.pdf
 *.xml
+.idea/Applied-Machine-Learning.iml
