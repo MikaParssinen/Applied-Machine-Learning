@@ -55,7 +55,7 @@ def generate_silhouette_scores(n_list: list[int], df: pd.DataFrame, model: str) 
             pass
     return silhouette_scores
 
-def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=None):
+def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=None, rotation=None):
     if size:
         plt.figure(figsize=size)
     if title:
@@ -65,4 +65,6 @@ def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=No
         plt.xlabel(x_label, fontsize=10)
     if y_label:
         plt.ylabel(y_label, fontsize=10)
+    if rotation:
+        plt.xticks(rotation=rotation)
     plt.show()
