@@ -12,22 +12,48 @@ The chosen hyperparameters for the Hierarchical clustering model are as follows:
 \end{itemize}
 
 \begin{figure}[H]
+    \hspace*{\fill}
     \centering
-    \includegraphics[width=0.8\textwidth]{src/figs/silhouette_agglomerative.png} 
-    \caption{Silhouette scores for agglomerative clustering}\label{fig:silhouette_agglomerative}
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{src/figs/silhouette_agglomerative.png} 
+        \caption{Silhouette scores for agglomerative clustering}\label{fig:silhouette_agglomerative}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{src/figs/dendogram.png} 
+        \caption{Dendogram}\label{fig:dendogram}
+    \end{subfigure}\label{fig:silhouette_dendogram}
+    \caption{Hierarchical clustering hyperparameter selection}\label{fig:hyperparameters_hierarchical}
+    \hspace*{\fill}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.8\textwidth]{src/figs/dendogram.png} 
-    \caption{Dendogram}\label{fig:dendogram}
-\end{figure}
+
 
 \subsection{DBSCAN}
 
 The chosen hyperparameters for the DBSCAN model are as follows:
 
 \begin{itemize}
-    \item \textbf{Epsilon = ?:} The epsilon value is chosen by\dots
     \item \textbf{Min samples = 17:} A rule of thumb for choosing min\_samples is to set it to be the number of features in the dataset plus one. In our case, we have $16$ features, so we set min\_samples to $17$.
+    \item \textbf{Epsilon = 0.3:} The epsilon value is chosen by first calculating the distance of each point to it's $17$-th nearest neighbor. Choosing $17$-th nearest in our case because that is our min\_samples. We then plot a histogram to find a knee to define an appropriate epsilon value. The histogram can be seen in \autoref{fig:epsilon_histogram} below. The knee seems to be found at somewhere between $0.3$ and $0.4$. To chose a good value between these two, we also look at the silhouette score for the different epsilon values, found in \autoref{fig:silhouette_epsilon}. We choose $0.3$ as our epsilon value.
 \end{itemize}
+
+\begin{figure}[H]
+    \hspace*{\fill}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{src/figs/epsilon_histogram.png} 
+        \caption{Epsilon value histogram}\label{fig:epsilon_histogram}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{src/figs/silhouette_epsilon.png} 
+        \caption{Silhouette scores for different epsilon values}\label{fig:silhouette_epsilon}
+    \end{subfigure}
+    \caption{Epsilon hyperparameter selection}\label{fig:hyperparameters_dbscan}
+    \hspace*{\fill}
+\end{figure}

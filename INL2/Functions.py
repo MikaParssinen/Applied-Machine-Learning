@@ -6,12 +6,11 @@ from scipy.spatial.distance import cdist
 from sklearn.decomposition import PCA
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler
-from sklearn.cluster import AgglomerativeClustering
+from sklearn.cluster import AgglomerativeClustering, DBSCAN
 from sklearn.metrics import silhouette_score
 
-
 # Standardize function
-def standardize(df, retscaler):
+def standardize(df, retscaler=None):
     scaler = StandardScaler()
     scaled_data = scaler.fit_transform(df)
     scaled_df = pd.DataFrame(scaled_data, columns=df.columns)
@@ -109,28 +108,34 @@ def tsne(df, dim):
 
     return tsne_df
 
-def generate_silhouette_scores(n_list: list[int], df: pd.DataFrame, model: str) -> list[float]:
+def generate_silhouette_scores(n_list: list, df: pd.DataFrame, model: str) -> list[float]:
     silhouette_scores = []
     for n in n_list:
         if model == "agglomerative":
             silhouette_scores.append(
                 silhouette_score(df, AgglomerativeClustering(n_clusters=n).fit_predict(df)))
         else:
-            pass
+            db = DBSCAN(eps=n, min_samples=17).fit(df)
+            silhouette_scores.append(silhouette_score(df, db.labels_))
     return silhouette_scores
 
-def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=None, rotation=None):
+def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=None, rotation=None, ylim=None, width=None):
     if size:
         plt.figure(figsize=size)
     if title:
         plt.title(title)
-    plt.bar(x_values, y_values)
     if x_label:
         plt.xlabel(x_label, fontsize=10)
     if y_label:
         plt.ylabel(y_label, fontsize=10)
     if rotation:
         plt.xticks(rotation=rotation)
+    if ylim:
+        plt.ylim(ylim)
+    if width:
+        plt.bar(x_values, y_values, width=width)
+    else:
+        plt.bar(x_values, y_values)
     plt.show()
 
 

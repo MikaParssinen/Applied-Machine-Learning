@@ -1,5 +1,45 @@
 \section{Result}
-\subsection{Cluster Description}
+
+\subsection{Visualization of the clusters using Hierarchical clustering:}
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/figs/3d_PCA_HC.png}
+        \caption{3D PCA visualization of clusters}
+        \label{fig:3D_pca}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_PCA_HC.png}} % Adjusts the image height
+        \caption{2D PCA visualization of clusters}
+        \label{fig:PCA_2d}
+    \end{subfigure}
+    \caption{Clustering visualizations: 3D (left) and 2D (right).}
+    \label{fig:comparison1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{src/figs/3d_t-SNE.png}
+        \caption{3D t-SNE visualization of clusters}
+        \label{fig:3D_tsne}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.45\textwidth}
+        \centering
+        \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_t-SNE.png}} % Adjusts the image height
+        \caption{2D t-SNE visualization of clusters}
+        \label{fig:2D_tsne}
+    \end{subfigure}
+    \caption{Clustering visualizations: 3D (left) and 2D (right).}
+    \label{fig:comparison2}
+\end{figure}
+
+\subsection{Cluster Description for Hierarchical Clustering}
 Clarification on what the clusters contain and represent. The clusters are described as follows:
 \vspace{0.3cm}
 \par
@@ -104,41 +144,42 @@ Cluster size & 3980.00 & High \\ \hline
 \end{table}
 \end{center}
 
-\subsection{Visualization of the clusters using Hierarchical clustering:}
+\subsection{Visualization of the clusters using DBSCAN:}
+
+The clusters we get from DBSCAN are visualized in 3D using PCA and t-SNE. First we visualize the clusters including the $-1$ cluster, which represents the outliers. Then we visualize the clusters without the $-1$ cluster, to get a better view of the clusters that DBSCAN finds.
+
 \begin{figure}[H]
+    \hspace*{\fill}
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{src/figs/3d_PCA_HC.png}
-        \caption{3D PCA visualization of clusters}
-        \label{fig:3D_pca}
+        \includegraphics[width=1.0\textwidth]{src/figs/3d_PCA_DBSCAN_with.png} 
+        \caption{3D PCA with $-1$ cluster}\label{fig:DBSCAN_PCA_with}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_PCA_HC.png}} % Adjusts the image height
-        \caption{2D PCA visualization of clusters}
-        \label{fig:PCA_2d}
+        \includegraphics[width=1.0\textwidth]{src/figs/3d_t-SNE_DBSCAN_with.png} 
+        \caption{3D t-SNE with $-1$ cluster}\label{fig:DBSCAN_tsne_with}
     \end{subfigure}
-    \caption{Clustering visualizations: 3D (left) and 2D (right).}
-    \label{fig:comparison1}
+    \caption{Visualization of DBSCAN clusters with $-1$ cluster data included}\label{fig:with_outliers}
+    \hspace*{\fill}
 \end{figure}
 
 \begin{figure}[H]
+    \hspace*{\fill}
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \includegraphics[width=\textwidth]{src/figs/3d_t-SNE.png}
-        \caption{3D t-SNE visualization of clusters}
-        \label{fig:3D_tsne}
+        \includegraphics[width=1.0\textwidth]{src/figs/3d_PCA_DBSCAN_without.png} 
+        \caption{3D PCA without $-1$ cluster}\label{fig:DBSCAN_PCA_without}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
-        \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_t-SNE.png}} % Adjusts the image height
-        \caption{2D t-SNE visualization of clusters}
-        \label{fig:2D_tsne}
+        \includegraphics[width=1.0\textwidth]{src/figs/3d_t-SNE_DBSCAN_without.png} 
+        \caption{3D t-SNE without $-1$ cluster}\label{fig:DBSCAN_tsne_without}
     \end{subfigure}
-    \caption{Clustering visualizations: 3D (left) and 2D (right).}
-    \label{fig:comparison2}
+    \caption{Visualization of DBSCAN clusters with $-1$ cluster data excluded}\label{fig:without_outliers}
+    \hspace*{\fill}
 \end{figure}
