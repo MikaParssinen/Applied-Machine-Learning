@@ -11,11 +11,14 @@ from sklearn.metrics import silhouette_score
 
 
 # Standardize function
-def standardize(df):
+def standardize(df, retscaler):
     scaler = StandardScaler()
     scaled_data = scaler.fit_transform(df)
     scaled_df = pd.DataFrame(scaled_data, columns=df.columns)
-    return scaled_df
+    if retscaler:
+        return scaled_df, scaler
+    else:
+        return scaled_df
 
 
 # Calculate the dunn index of clusters
@@ -130,6 +133,18 @@ def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=No
         plt.xticks(rotation=rotation)
     plt.show()
 
+
+
+def unstandardize(df, scaler):
+    df_unstandardized = scaler.inverse_transform(df.drop(columns=['Cluster']))
+
+    df_unstandardized = pd.DataFrame(df_unstandardized, columns=df.drop(columns=['Cluster']).columns)
+
+    df_unstandardized['Cluster'] = df['Cluster']
+
+    return df_unstandardized
+
+
 def calculate_kn_distance(X,k):
 
     kn_distance = []
@@ -145,3 +160,4 @@ def calculate_kn_distance(X,k):
         kn_distance.append(eucl_dist[k])
 
     return kn_distance
+
