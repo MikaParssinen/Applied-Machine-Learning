@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+import math
 import matplotlib.pyplot as plt
 from scipy.spatial.distance import cdist
 from sklearn.decomposition import PCA
@@ -133,6 +134,7 @@ def bar_plot(x_values, y_values, x_label=None, y_label=None, title=None, size=No
     plt.show()
 
 
+
 def unstandardize(df, scaler):
     df_unstandardized = scaler.inverse_transform(df.drop(columns=['Cluster']))
 
@@ -141,4 +143,21 @@ def unstandardize(df, scaler):
     df_unstandardized['Cluster'] = df['Cluster']
 
     return df_unstandardized
+
+
+def calculate_kn_distance(X,k):
+
+    kn_distance = []
+    for i in range(len(X)):
+        eucl_dist = []
+        for j in range(len(X)):
+            eucl_dist.append(
+                math.sqrt(
+                    ((X[i,0] - X[j,0]) ** 2) +
+                    ((X[i,1] - X[j,1]) ** 2)))
+
+        eucl_dist.sort()
+        kn_distance.append(eucl_dist[k])
+
+    return kn_distance
 
