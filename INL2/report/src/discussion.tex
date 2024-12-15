@@ -1,18 +1,21 @@
 \section{Discussion}
 
+
+\subsection{Comparing the models}
+Based on the results, we can see that DBSCAN does not provide useful clusters. 
+It either assumes that approximately 80\% of the data is noise and groups it into a single cluster, or it creates too many clusters, resulting in overly niche and small groups that offer no meaningful insights into customer behavior.
+\par
+Comparing this to the results of the Hierarchical Clustering, we obtain groups of customers with distinct behaviors, which provides valuable insights for each group. Additionally, Hierarchical Clustering allows us to visualize the data more effectively through a dendrogram, which illustrates how clusters are formed and combined.
+This is might be useful for the economics team, as they may want to adjust the number of clusters, based on how each cluster is formed. 
+The flexibility offered by this method is especially important, as it does not require us to predefine the number of clusters, allowing for a more fine approach in identifying customer segments.
+
+
 \subsection{Cluster Analysis for Targeted Marketing}
 The results from Hierarchical clustering reveals 5 distinct clusters, 
 each of the clusters shows how different groups of credit card users behaves. 
 In other words we now have a deep insight of our customers habits and can therefore tailor our products for each of the groups.
 For instance, the results above describes \textbf{Cluster 4} as: Customers with low purchases, high cash advances and low full payment. 
-This cluster has the size of 1790 costumers, which means that \(\approx 22\%\) costumers use their card almost only for cash advances. 
+This cluster has the size of 1790 costumers, which means that approximately 22\% costumers use their card almost only for cash advances. 
 \par
 Great! We can now target marketing these costumers and recommend using our other credit cards which offers better benefits for using the card for cash advances.
 
-\subsection{Hierarchical clustering}
-During testing of different clustering methods, we concluded that Hierarchical clustering is the most suitable approach for analyzing and clustering our data. 
-This method offers significant flexibility, such as not requiring the predefined number of clusters. 
-Which is crucial for our analysis, as there is no clear way to determine the exact number of clusters in the data beforehand.
-Additionally, by visualizing the dendrogram, we gain valuable insights into how the clusters are formed, allowing us to make decisions about the optimal number of clusters to use.
-This information is particularly relevant for the economics team, as they have a deeper understanding of the data. 
-Their expertise could, for example, help determine whether a specific cluster is necessary.
