@@ -39,7 +39,7 @@ The chosen hyperparameters for the DBSCAN model are as follows:
     \item \textbf{Min samples = 17:} A rule of thumb for choosing min\_samples is to set it to be the number of features in the dataset plus one. In our case, we have $16$ features, so we set min\_samples to $17$.
     \item \textbf{Epsilon = 0.3:} The epsilon value is chosen by first calculating the distance of each point to it's $17$-th nearest neighbor. Choosing $17$-th nearest in our case because that is our min\_samples. We then plot a histogram to find a knee to define an appropriate epsilon value. The histogram can be seen in \autoref{fig:epsilon_histogram} below. The knee seems to be found at somewhere between $0.3$ and $0.4$. To chose a good value between these two, we also look at the silhouette score for the different epsilon values, found in \autoref{fig:silhouette_epsilon}. We choose $0.3$ as our epsilon value.
 \end{itemize}
-
+\vspace{-0.4cm}
 \begin{figure}[H]
     \hspace*{\fill}
     \centering
