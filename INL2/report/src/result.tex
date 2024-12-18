@@ -1,5 +1,6 @@
+\vspace{-0.2cm}
 \section{Result}
-
+\vspace{-0.1cm}
 \subsection{Hierarchical Clustering}
 
 \subsubsection{Evaluation}
@@ -13,23 +14,25 @@
         \textbf{Silhouette Score} & $0.169$ \\ \hline
         \textbf{Dunn Index} & $0.009$ \\ \hline
     \end{tabular}
+    \vspace{-0.1cm}
     \caption{Evaluation metrics for Hierarchical Clustering}\label{fig:Hierarchical_evaluation}
+    \vspace{-0.2cm}
 \end{figure}
-
+%\vspace{-0.1cm}
 \subsubsection{Visualization of the clusters:}
 \begin{figure}[H]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{src/figs/3d_PCA_HC.png}
-        \caption{3D PCA visualization of clusters}
+        \caption{3D PCA}
         \label{fig:3D_pca}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_PCA_HC.png}} % Adjusts the image height
-        \caption{2D PCA visualization of clusters}
+        \caption{2D PCA}
         \label{fig:PCA_2d}
     \end{subfigure}
     \caption{Clustering visualizations: 3D (left) and 2D (right).}
@@ -41,14 +44,14 @@
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=\textwidth]{src/figs/3d_t-SNE.png}
-        \caption{3D t-SNE visualization of clusters}
+        \caption{3D t-SNE}
         \label{fig:3D_tsne}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \raisebox{0.3cm}{\includegraphics[width=\textwidth]{src/figs/2d_t-SNE.png}} % Adjusts the image height
-        \caption{2D t-SNE visualization of clusters}
+        \caption{2D t-SNE}
         \label{fig:2D_tsne}
     \end{subfigure}
     \caption{Clustering visualizations: 3D (left) and 2D (right).}
@@ -56,15 +59,24 @@
 \end{figure}
 
 \subsubsection{Cluster Descriptions}
-Clarification on what the clusters contain and represent. The clusters are described as follows:
+Clarification on what the clusters contain and represent.
+Values are represented by the mean of each cluster, except for the cluster size, which is calculated as the sum of all data points in the cluster.  
+
 \vspace{0.3cm}
 \par
+
 \begin{center}
-\textbf{Cluster 1: Medium Activity, Low Spenders with Higher Full Payment Rate}
-\begin{table}[H]
+
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
 \centering
+\textbf{Cluster 1: Medium Activity, Low Spenders with Higher Full Payment Rate}
+\vspace{0.2cm}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{|l|c|c|}
 \hline
+\rowcolor{gray!50}
 \textbf{Feature} & \textbf{Values} & \textbf{Interpretation} \\ \hline
 Balance & 587.98 & Low \\ \hline
 Purchases & 1203.26 & Low \\ \hline
@@ -75,16 +87,18 @@ Credit Limit & 4157.06 & Moderate \\ \hline
 Payments & 1269.62 & Moderate \\ \hline
 Full Payment Percentage & 0.35 & Moderate \\ \hline
 Cluster size & 2228.00 & Moderate \\ \hline
-\end{tabular}
-\caption{Cluster 1 description.}
-\end{table}
-
+\end{tabular}}
+\captionof{table}{Cluster 1 description.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
 \centering
 \textbf{Cluster 2: High Spenders with Large Balances and High Full Payment Rate}
-\begin{table}[H]
-\centering
+\vspace{0.2cm}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{|l|c|c|}
 \hline
+\rowcolor{gray!50}
 \textbf{Feature} & \textbf{Values} & \textbf{Interpretation} \\ \hline
 Balance & 4812.38 & Very High \\ \hline
 Purchases & 27505.34 & Very High \\ \hline
@@ -95,16 +109,21 @@ Credit Limit & 16000.00 & Very High \\ \hline
 Payments & 28138.98 & Very High \\ \hline
 Full Payment Percentage & 0.53 & High \\ \hline
 Cluster size & 23.00 & Very Low \\ \hline
-\end{tabular}
-\caption{Cluster 2 description.}
-\end{table}
+\end{tabular}}
+\captionof{table}{Cluster 2 description.}
+\end{minipage}
 
+\vspace{0.7cm}
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
 \centering
 \textbf{Cluster 3: Moderate Credit Usage with Low Full Payment Rate}
-\begin{table}[H]
-\centering
+\vspace{0.2cm}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{|l|c|c|}
 \hline
+\rowcolor{gray!50}
 \textbf{Feature} & \textbf{Values} & \textbf{Interpretation} \\ \hline
 Balance & 3093.29 & High \\ \hline
 Purchases & 5059.38 & Moderate \\ \hline
@@ -115,16 +134,18 @@ Credit Limit & 8084.07 & High \\ \hline
 Payments & 4411.09 & Moderate \\ \hline
 Full Payment Percentage & 0.18 & Low \\ \hline
 Cluster size & 609.00 & Low \\ \hline
-\end{tabular}
-\caption{Cluster 3 description.}
-\end{table}
-
+\end{tabular}}
+\captionof{table}{Cluster 3 description.}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
 \centering
 \textbf{Cluster 4: Customers with Low Purchases, High Cash Advances, and Low Full Payment}
-\begin{table}[H]
-\centering
+\vspace{0.2cm}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{|l|c|c|}
 \hline
+\rowcolor{gray!50}
 \textbf{Feature} & \textbf{Values} & \textbf{Interpretation} \\ \hline
 Balance & 3753.04 & High \\ \hline
 Purchases & 536.14 & Low \\ \hline
@@ -135,16 +156,22 @@ Credit Limit & 6304.57 & High \\ \hline
 Payments & 2908.71 & Low \\ \hline
 Full Payment Percentage & 0.04 & Low \\ \hline
 Cluster size & 1796.00 & Moderate \\ \hline
-\end{tabular}
-\caption{Cluster 4 description.}
-\end{table}
+\end{tabular}}
+\captionof{table}{Cluster 4 description.}
+\end{minipage}
 
+\vspace{0.7cm}
+
+
+\noindent
+\begin{minipage}[t]{0.48\textwidth}
 \centering
 \textbf{Cluster 5: Low Usage of Credit with Minimal Purchases or Payments}
-\begin{table}[H]
-\centering
+\vspace{0.2cm}
+\resizebox{\textwidth}{!}{
 \begin{tabular}{|l|c|c|}
 \hline
+\rowcolor{gray!50}
 \textbf{Feature} & \textbf{Values} & \textbf{Interpretation} \\ \hline
 Balance & 950.55 & Low \\ \hline
 Purchases & 376.41 & Low \\ \hline
@@ -155,10 +182,12 @@ Credit Limit & 3310.72 & Low \\ \hline
 Payments & 1011.16 & Low \\ \hline
 Full Payment Percentage & 0.10 & Low \\ \hline
 Cluster size & 3980.00 & High \\ \hline
-\end{tabular}
-\caption{Cluster 5 description.}
-\end{table}
+\end{tabular}}
+\captionof{table}{Cluster 5 description.}
+\end{minipage}
+
 \end{center}
+
 
 \subsection{DBSCAN}
 
