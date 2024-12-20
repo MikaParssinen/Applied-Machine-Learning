@@ -1,2 +1,7 @@
 \section{Sampling data}
 
+For this assignment, the whole feature map of each data point is considered. I.e., the complete $28 \times 28$ pixel images is used as as input to our models. The dataset is already split into a training set and a test set from the start. The training set consists of $60,000$ images and the test set consists of $10,000$ images. 
+\par
+During traing of the models, the training set is further split into a training set and a validation set. The "validation\_split" chosen when training the models is $0.2$. This means that $20\%$ of the training set is used as a validation set. 
+\par
+The images provided have already been through a preprocessing process. All images have been scaled down to be $28 \times 28$ and each pixel value has been converted to a grayscale value between $0$ and $255$.
