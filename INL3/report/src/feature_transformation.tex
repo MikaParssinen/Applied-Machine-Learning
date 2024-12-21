@@ -1,3 +1,15 @@
 \section{Feature transformation process}
 
+\subsection{Artificial neural network}
+
 \subsection{Convolutional neural network}
+
+The feature transformation process that defines a convolutional neural network (CNN) is in the convolution layer. By using one or more filters, and processing an image with a convolution operation, the CNN can learn to detect features in the image. A filter is a $m \times n$ matrix that moves over the input and computes the dot product between the filter and the input it covers at each position. With a stride of $y \times x$, a filter can extract features such as edges and textures. 
+\par
+The filters are learned during the training process, and each filter of the CNN can learn to detect unique features that are useful for the classification task. Before passing on the output of the convolution layer to the next layer, the output is passed through an activation function, such as the rectified linear unit (ReLU) function. The ReLU function is used to introduce non-linearity to the model, which allows the CNN to learn complex patterns in the data.
+\par
+The output of the convolution layer is then passed through a pooling layer. The pooling layer reduces the spatial dimension of each feature map without loosing essential information. A common method is called max pooling which extracts the maximum value from subsections of the feature map.
+\par
+After the input goes through various convolutional and pooling layers, the output is flattened into a vector and passed through one or more fully connected layers. The fully connected layers are used to reason about the features extracted by the previous layers to identify patterns. In the case of identifying handwritten digits, the fully connected layers take a look at the features of the input image and determine which features are important to classify a digit. 
+\par
+The final layer of the CNN is the output layer, which uses a softmax activation function to output the probability of each class. 
