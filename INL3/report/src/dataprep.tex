@@ -1,0 +1,24 @@
+\section{Data Preparation and Feature Extraction}
+
+Data preparation and feature extraction is used to ensure the input data is right formatted and scaled for neural networks. While some steps are common to both CNN and ANN, each of our model type also has specific preprocessing requirements to its architecture.
+
+\subsection{Common Preprocessing Steps}
+The following steps are applied to both CNN and ANN:
+\begin{itemize}
+\item \textbf{Normalization}: Pixel values are scaled to the range $[0, 1]$ by dividing by $255.0$, ensuring the data matches the value range expected by neural networks.
+\item \textbf{One-Hot Encoding}: Categorical labels are transformed into a one-hot encoded format to prepare them for classification by the network's output layer.
+\end{itemize}
+
+\subsection{Model-Specific Preparations}
+\textbf{CNN-Specific Preparations}:
+\begin{itemize}
+\item \textbf{Reshaping}: Images are reshaped to include a channel dimension, changing their shape from $(28, 28)$ to $(28, 28, 1)$. This format is required by the convolutional layers, because they process the data as three-dimensional inputs (height, width, channels).
+\end{itemize}
+
+\textbf{ANN-Specific Preparations}:
+\begin{itemize}
+\item \textbf{Flattening}: Images are flattened into one-dimensional arrays to match the input format required by fully connected layers.
+\item \textbf{Feature Extraction}: Edge features are extracted from the images using the Sobel operator.
+\end{itemize}
+
+Following these preparation steps, the data is optimized for each network architecture.

@@ -3,27 +3,17 @@
 
 \subsection{Artificial neural network}
 
-Feature transformation process for an Artificial Neural Network (ANN) involves several important steps to prepare the input data and transform it through the network layers to produce the final output.
-
-\subsubsection{Data Preprocessing and Feature Extraction}
-Before feeding the data into the ANN, it is essential to preprocess it to ensure that it is in the right format and scale. This typically involves the following steps:
-\begin{itemize}
-    \item \textbf{Normalization}: The input data is normalized to a range of [0, 1].
-    \item \textbf{Flattening}: The input images, are flattened into a 1D array. The ANN expects a flat array of inputs so this is crucial.
-    \item \textbf{One-Hot Encoding}: The categorical labels are converted into a binary matrix with one-hot encoding. Preparing the labels for the network's output layer in classification tasks.
-\end{itemize}
-
-Additionally a feature extraction technique is applied to the input data to enhance the relevant features. In our case, edge detection is done using the Sobel operator to extract edge features.
+Feature transformation process for an ANN involves transforming the input data through the network layers to produce the prediction.
 
 \subsubsection{Transformation Through Network Layers}
-The data is now preprocessed and features are extracted, it is ready to be fed into the ANN. The transformation process through the network layers includes these steps:
+The data is preprocessed and features are extracted as mention in the subsection Data Preparation and Feature Extraction, it is now ready to be fed into the ANN. The transformation process through the network layers includes these steps:
 \begin{itemize}
-    \item \textbf{Input Layer}: Flattening input data is fed into the input layer.
-    \item \textbf{Hidden Layers}: Input data is then passed through the hidden layers. Each hidden layer consists of neurons that apply a linear transformation followed by a non-linear activation function, we use ReLu. The weights and biases of the neurons are learned during the training process.
+    \item \textbf{Input Layer}: The input data is fed into the input layer.
+    \item \textbf{Hidden Layers}: The input data is then passed through the hidden layers. Each hidden layer consists of neurons that apply a linear transformation followed by a non-linear activation function, we use the function ReLu. The weights and biases of the neurons are learned during the training process.
     \item \textbf{Dropout and Regularization}: To prevent overfitting, dropout layers is added after some hidden layers. Dropout randomly drops some inputs during training to prevent overfitting, and L2 regularization helps by limiting large weights.
-    \item \textbf{Output Layer}: The final layer of the ANN, we use 10 neurons 1 for each possible class. Then a softmax activation function, which outputs the probability of each class. 
+    \item \textbf{Output Layer}: The final layer contains neurons equal to the number of possible classes, which is 10 in our case. A softmax activation function is then applied, to output the probability for each class.
 \end{itemize}
-From the output layer the class with the highest probability is then chosen as the predicted label.
+From the output layer, the predicted label is the class with the highest probability.
 
 \subsection{Convolutional neural network}
 
