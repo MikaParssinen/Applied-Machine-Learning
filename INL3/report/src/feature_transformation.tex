@@ -2,6 +2,17 @@
 
 \subsection{Artificial neural network}
 
+Feature transformation in an ANN involves processing input data through the network layers to generate predictions.
+After preprocessing and feature extraction, as described in the subsection Data Preparation and Feature Extraction, the data is ready for input into the ANN. 
+The transformation process through the network layers includes the following steps:
+\begin{itemize}
+    \item \textbf{Input Layer}: The input data is fed into the input layer.
+    \item \textbf{Hidden Layers}: The input data is then passed through the hidden layers. Each hidden layer consists of neurons that apply a linear transformation followed by a non-linear activation function, we use the function ReLu. The weights and biases of the neurons are learned during the training process.
+    \item \textbf{Dropout and Regularization}: To prevent overfitting, dropout layers is added after some hidden layers. Dropout randomly drops some inputs during training to prevent overfitting, and L2 regularization helps by limiting large weights.
+    \item \textbf{Output Layer}: The final layer contains neurons equal to the number of possible classes, which is 10 in our case. A softmax activation function is then applied, to output the probability for each class.
+\end{itemize}
+From the output layer, the predicted label is the class with the highest probability.
+
 \subsection{Convolutional neural network}
 
 The feature transformation process that defines a convolutional neural network (CNN) is in the convolution layer. By using one or more filters, and processing an image with a convolution operation, the CNN can learn to detect features in the image. A filter is a $m \times n$ matrix that moves over the input and computes the dot product between the filter and the input it covers at each position. With a stride of $y \times x$, a filter can extract features such as edges and textures. 
