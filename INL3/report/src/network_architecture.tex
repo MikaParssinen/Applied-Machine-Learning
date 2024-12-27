@@ -4,4 +4,43 @@
 
 \subsection{Convolutional neural network}
 
-The CNN model consists of two convolutional layers, each followed by a max pooling layer and . 
+Our CNN model is built with the following architecture:
+
+\begin{python}
+regularizer = L2(1e-4)
+
+model = Sequential()
+model.add(Conv2D(32, (3, 3), activation="relu", input_shape=(28, 28, 1), use_bias=True, kernel_regularizer=regularizer))
+model.add(MaxPooling2D((2, 2)))
+model.add(Dropout(0.20))
+
+model.add(Conv2D(32, (3, 3), activation='relu', use_bias=True, kernel_regularizer=regularizer))
+model.add(MaxPooling2D((2, 2)))
+model.add(Dropout(0.20))
+
+model.add(Flatten())
+model.add(Dense(256, activation='relu'))
+model.add(Dense(512, activation='relu'))
+model.add(Dropout(0.20))
+model.add(Dense(10, activation='softmax'))
+\end{python}
+
+The model consists of two convolutional layers, each followed by a max pooling layer and a dropout layer. The output of the second max pooling layer is then flattened and passed through three dense layers. The first two dense layers have 256 and 512 neurons, respectively, and the last dense layer has 10 neurons. 
+\par
+Another dropout layer is added after the second dense layer to prevent overfitting. The activation function used in the convolutional layers is ReLU, and the output layer uses the softmax activation function. We use L2 regularization for the kernel in the convolutional layers a regularization factor of $1 \cdot 10^{-4}$.
+\par
+Both convolutional layers have 32 filters with a kernel size of $3 \times 3$ and they also use a bias term. The max pooling layers have a pool size of $2 \times 2$. Each dropout layer has a dropout rate of $0.20$.
+\par
+Our model is then compiled and fit in the following way:
+
+\begin{python}
+optimizer = Adam(learning_rate=0.0005)
+model.compile(optimizer=optimizer, loss='categorical_crossentropy', metrics=['accuracy'])
+
+reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.2, patience=3)
+history = model.fit(x_train, y_train, epochs=20, validation_split=0.2, callbacks=[reduce_lr])
+\end{python}
+
+We compile the model with the Adam optimizer that has a learning rate of $0.0005$ and the loss function is categorical crossentropy. The metric for evaluation is accuracy.
+\par
+We also use a callback function that reduces the learning rate by a factor of $0.2$ if the validation loss does not improve for $3$ epochs. The model is then trained for 20 epochs with a validation split of $0.2$. 
