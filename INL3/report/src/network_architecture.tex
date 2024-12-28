@@ -16,7 +16,7 @@ model.add(Dropout(0.5))
 model.add(Dense(32, activation="relu", kernel_regularizer=l2(0.001)))
 model.add(Dense(10, activation="softmax"))
 \end{python}
-The ANN model is made by 4 layers: 1 input layer, 2 hidden layers, and 1 output layer. 
+The ANN 2is made by 4 layers: 1 input layer, 2 hidden layers, and 1 output layer. 
 The input layer, with 128 neurons, uses the ReLU activation function and an L2 kernel regularizer (0.001) to prevent overfitting.
 It also defines the input shape (784, ), which is representing a flattened 28x28 pixel image.
 \par
