@@ -1,6 +1,45 @@
 \section{Model architecture}
 
 \subsection{Artificial neural network}
+Our ANN model is built with the following architecture:
+\begin{python}
+model = Sequential()
+model.add( 
+         Dense(128, 
+               input_shape=(784, ),
+               activation="relu", 
+               kernel_regularizer=l2(0.001)
+               )
+          )
+model.add(Dense(64, activation="relu", kernel_regularizer=l2(0.001)))
+model.add(Dropout(0.5))
+model.add(Dense(32, activation="relu", kernel_regularizer=l2(0.001)))
+model.add(Dense(10, activation="softmax"))
+\end{python}
+The ANN 2is made by 4 layers: 1 input layer, 2 hidden layers, and 1 output layer. 
+The input layer, with 128 neurons, uses the ReLU activation function and an L2 kernel regularizer (0.001) to prevent overfitting.
+It also defines the input shape (784, ), which is representing a flattened 28x28 pixel image.
+\par
+The hidden layers extract increasingly complex information. 
+The first hidden layer has 64 neurons, and the second has 32, both using ReLU and the same regularizer. 
+A dropout function is included to deactivate neurons randomly, reducing overfitting.
+\par
+The output layer has 10 neurons (one per class) and uses the softmax activation function to predict the correct digit (0-9) from handwritten input.
+The chosen architecture balances computational efficiency and accuracy. ReLU introduces non-linearity, enabling learning of complex patterns while being computationally efficient. 
+Finally the L2 regularizer further reduces overfitting by penalizing large weights.
+
+\begin{python}
+optimizer = Adam(learning_rate=0.001)
+
+model.compile(
+    optimizer = optimizer, 
+    loss = "categorical_crossentropy", 
+    metrics = ["accuracy"]
+)
+\end{python}
+To compile it we use the optimizer Adam with the learning rate of 0.001, and the loss function categorical crossentropy.
+Adam is our choice because it adapts the learing rate for each parameter and is very computational friendly.
+Lastly, we use the loss function because we have a multi classification problem.
 
 \subsection{Convolutional neural network}
 
