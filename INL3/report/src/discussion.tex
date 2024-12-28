@@ -1,8 +1,9 @@
 \section{Discussion}
 
-\begin{itemize}
-    \item Why is ANN performing worse than CNN?
-    \item Both models are overfit
-    \item Extensive studies of related work could improve results
-    \item Time and computational resources are limited
-\end{itemize}
+The CNN model clearly outperforms the ANN model in all evaluation metrics. This is also excepted since the CNN model is designed to work with image data and can capture spatial information that the ANN model cannot. ANN's are also more simple than CNN's and offer fewer tools to build the model.
+\par
+Common for both our models is that they are overfit and could need more regularization and add more dropout layers to prevent this. Another limitiation to our findings is that we have not done any data augmentation such as rotations to the images. This could improve our CNN model and prevent overfitting, but rotations for the ANN model would not make sense since the model is not designed to work with image data.
+\par
+Researching related work more extensively could also improve our results. The task of classifying handwritten digits from the MNIST database has been studied extensively and different CNN models have been developed that outperform our model. However, time and computational resources are limited, and we have not been able to explore these models in detail.
+\par
+Another limitation could be that we haven't tried enough hyperparameters for our models. Adam optimizer seem to be the best optimizer for these models but we have not done extensive research on this. We also assume that categorical crossentropy is the best loss function for this task since it is a classification problem. Finding big improvements in our models is a matter of architectural design and research because of the sheer amount of possible architecture and hyperparameter combinations. These combinations require too much time and computational resources for grid search to be a viable option.
