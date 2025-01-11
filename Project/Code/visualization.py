@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 
-def display_before_after(before, after, n=6):
+def display_before_after(before, after, n=4):
     """Displays n random images from each array."""
     indices = np.random.randint(len(before), size=n)
 
