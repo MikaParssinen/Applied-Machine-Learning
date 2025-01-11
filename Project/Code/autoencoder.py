@@ -1,6 +1,10 @@
 import preprocessing
 import numpy as np
 
+from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, MaxPooling2D, Flatten, Dense, Reshape, Conv2DTranspose
+from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.models import Model
+
 def create_image_dataset(dir_path, image_size):
     """
     - Loads images from the directory dir_path
@@ -28,7 +32,7 @@ def create_image_dataset(dir_path, image_size):
     return images
 
 
-def build_autoencoder(image_size):
+def build_and_compile(image_size):
     encoder_input = Input(shape=(image_size[0], image_size[1], 3))
 
     # Encoding layers
@@ -62,3 +66,15 @@ def build_autoencoder(image_size):
     autoencoder.compile(optimizer=optimizer, loss="mse")
 
     return autoencoder
+
+def fit_model(model, images, epochs=25, batch_size=16, callbacks=[]):
+    history = model.fit(
+        x=images,
+        y=images,
+        epochs=epochs,
+        batch_size=batch_size,
+        shuffle=True,
+        validation_split=0.2,
+        callbacks=callbacks,
+    )
+    return history
