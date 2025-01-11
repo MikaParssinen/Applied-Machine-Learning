@@ -4,7 +4,7 @@ from matplotlib.pyplot import axis
 
 from tensorflow.keras.preprocessing import image_dataset_from_directory
 
-def import_images(dir_path, image_size, categorical_labels=False):
+def import_images(dir_path, image_size, categorical_labels=False, to_numpy=False):
     if categorical_labels:
         (images, labels) = image_dataset_from_directory(
             dir_path,
@@ -13,7 +13,10 @@ def import_images(dir_path, image_size, categorical_labels=False):
             batch_size=None,
             label_mode='categorical'
         )
-        return np.array(list(images.as_numpy_iterator())), labels
+        if to_numpy:
+            return np.array(list(images.as_numpy_iterator())), labels
+        else:
+            return images, labels
 
     images = image_dataset_from_directory(
         dir_path,
@@ -22,7 +25,10 @@ def import_images(dir_path, image_size, categorical_labels=False):
         batch_size=None,
         label_mode='categorical'
     )
-    return np.array(list(images.as_numpy_iterator()))
+    if to_numpy:
+        return np.array(list(images.as_numpy_iterator()))
+    else:
+        return images
 
 def rotate_all_90(images):
     return np.rot90(images, axes=(1,2))
