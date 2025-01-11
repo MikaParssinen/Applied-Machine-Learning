@@ -1,7 +1,7 @@
 import numpy as np
 from matplotlib import pyplot as plt
 from matplotlib.pyplot import axis
-
+import tensorflow as tf
 from tensorflow.keras.preprocessing import image_dataset_from_directory
 
 def import_images(dir_path, image_size, categorical_labels=False):
@@ -37,3 +37,21 @@ def mirror_images(images, axis=0):
         return images[:, :,::-1,:].copy()
     else:
         raise Exception("Only valid axis are 0 or 1 (x mirror or y mirror)")
+
+
+def add_gaussian_noise(image, label):
+    """Adds Gaussian noise to the image."""
+    noise = tf.random.normal(shape=tf.shape(image), mean=0.0, stddev=2.0)
+    noisy_image = image + noise
+    return noisy_image, label
+
+
+def add_salt_and_pepper_noise(image, label, salt_prob=0.04, pepper_prob=0.04):
+    """Adds salt and pepper noise to the image."""
+    random_vals = tf.random.uniform(shape=tf.shape(image), minval=0.0, maxval=1.0)
+    salt = random_vals < salt_prob
+    image = tf.where(salt, 255.0, image)
+
+    pepper = random_vals > (1.0 - pepper_prob)
+    image = tf.where(pepper, 0.0, image)
+    return image, label
