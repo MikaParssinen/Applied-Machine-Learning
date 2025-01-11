@@ -15,7 +15,7 @@ def create_image_dataset(dir_path, image_size):
     """
 
     # Import and normalize original images
-    images = preprocessing.import_images(dir_path, image_size)
+    images = preprocessing.import_images(dir_path, image_size, to_numpy=True)
     images = preprocessing.normalize_images(images)
 
     # Create new images by mirroring the images in both axis
