@@ -475,3 +475,4 @@ TSWLatexianTemp*
 *.pdf
 *.xml
 .idea/Applied-Machine-Learning.iml
+Project/Code/model.keras
