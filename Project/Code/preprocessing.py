@@ -45,7 +45,7 @@ def normalize_images(images):
     return images.astype('float32') / 255.0
 
 
-def normalize_img(train_data, test_data):
+def normalize_dataset(train_data, test_data):
     """Normalize the data to have a value between 0 and 1"""
     def normalize(image, label):
         image = image / 255.0
