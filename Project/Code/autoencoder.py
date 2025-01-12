@@ -1,5 +1,6 @@
 import preprocessing
 import numpy as np
+import cv2
 
 from skimage.metrics import structural_similarity
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, MaxPooling2D, Flatten, Dense, Reshape, Conv2DTranspose
@@ -80,16 +81,26 @@ def fit_model(model, images, epochs=25, batch_size=16, callbacks=[]):
     )
     return history
 
-def get_scores_and_diffs(before, after, win_size=9, gaussian_weights=False):
+def get_masks(before, after, win_size=9, gaussian_weights=False, threshold=0):
     scores = []
-    diffs = []
+    masks = []
     for (image1, image2) in zip(before, after):
         (score, diff) = structural_similarity(image1, image2, win_size=win_size, data_range=1.0, full=True,
                                               channel_axis=2, gaussian_weights=gaussian_weights)
         diff = np.clip(diff, a_min=0.0, a_max=1.0)
         scores.append(score)
-        diffs.append(diff)
-    return np.array(scores), np.array(diffs)
+        _, mask = cv2.threshold(diff, threshold, 1.0, cv2.THRESH_BINARY)
+        masks.append(mask)
+    return np.array(scores), np.array(masks)
+
+def calculate_threshold(normal_masks, anomaly_masks):
+    min_normal = np.min(normal_masks)
+    max_anomaly = np.max(anomaly_masks)
+    prediction_threshold = (min_normal + max_anomaly) / 2
+
+    print(min_normal)
+    print(max_anomaly)
+    print(prediction_threshold)
 
 def predict_anomalies(before, after, threshold):
     y = []
