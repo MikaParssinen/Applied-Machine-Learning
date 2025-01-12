@@ -23,7 +23,7 @@ def build_cnn_model():
         layers.Dense(4, activation='softmax')  # 4 output units, one for each class (good, bad, contaminated, etc.)
     ])
 
-    # Compile the model with sparse categorical crossentropy loss
+    # Compile the model with categorical crossentropy
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
