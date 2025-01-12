@@ -1,6 +1,7 @@
 import preprocessing
 import numpy as np
 
+from skimage.metrics import structural_similarity
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, MaxPooling2D, Flatten, Dense, Reshape, Conv2DTranspose
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.models import Model
@@ -78,3 +79,27 @@ def fit_model(model, images, epochs=25, batch_size=16, callbacks=[]):
         callbacks=callbacks,
     )
     return history
+
+def get_scores_and_diffs(before, after, win_size=9, gaussian_weights=False):
+    scores = []
+    diffs = []
+    for (image1, image2) in zip(before, after):
+        (score, diff) = structural_similarity(image1, image2, win_size=win_size, data_range=1.0, full=True,
+                                              channel_axis=2, gaussian_weights=gaussian_weights)
+        diff = np.clip(diff, a_min=0.0, a_max=1.0)
+        scores.append(score)
+        diffs.append(diff)
+    return np.array(scores), np.array(diffs)
+
+def predict_anomalies(before, after, threshold):
+    y = []
+
+    for (image1, image2) in zip(before, after):
+        score = structural_similarity(image1, image2, win_size=9, data_range=1.0,
+                                              channel_axis=2, gaussian_weights=False)
+        if score > threshold:
+            y.append(False)
+        else:
+            y.append(True)
+
+    return np.array(y)
