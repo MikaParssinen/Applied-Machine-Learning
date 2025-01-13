@@ -81,7 +81,7 @@ def fit_model(model, images, epochs=25, batch_size=16, callbacks=[]):
     )
     return history
 
-def get_masks(before, after, win_size=9, gaussian_weights=False, threshold=0):
+def get_scores_and_masks(before, after, win_size=9, gaussian_weights=False, threshold=0):
     scores = []
     masks = []
     for (image1, image2) in zip(before, after):
