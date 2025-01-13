@@ -1,0 +1,54 @@
+\begin{figure}[H] 
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=10cm, height=8cm,
+            xlabel={False Positive Rate (FPR)},
+            ylabel={True Positive Rate (TPR)},
+            xmin=0, xmax=1,
+            ymin=0, ymax=1,
+            grid=both,
+            grid style={dashed, gray!30},
+            legend pos=south east,
+            legend style={font=\small},
+            axis lines=left,
+            axis line style={-},
+            samples=100
+        ]
+        % Random classifier line (diagonal)
+        \addplot [dashed, gray] coordinates {(0,0) (1,1)};
+        \addlegendentry{Random Classifier}
+
+        % Example ROC curve
+        \addplot [
+            name path=f,
+            thick,
+            smooth,
+            blue,
+        ] coordinates {
+            (0.0, 0.0)
+            (0.1, 0.6)
+            (0.2, 0.75)
+            (0.4, 0.85)
+            (0.6, 0.9)
+            (0.8, 0.95)
+            (1.0, 1.0)
+        };
+        \addlegendentry{Anomaly Detection Procedure}
+
+        \addplot [
+            name path=g,
+            draw=none
+        ] coordinates {
+            (0,0)
+            (1,0)
+        };
+        \addplot[
+            blue!20, opacity=0.5
+            ] fill between[of=f and g, soft clip={domain=-2:2}];
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{ROC-AUC visualized as the area under the ROC-curve.}
+    \label{fig:ROCAUC}
+\end{figure}

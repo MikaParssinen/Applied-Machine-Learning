@@ -3,6 +3,11 @@
 \usepackage[english]{babel}
 \usepackage{tikz}
 \usepackage[hidelinks]{hyperref}
+\usepackage{float}
+\usepackage{amsmath, amssymb}
+\usepackage{pgfplots}
+\pgfplotsset{width=10cm,compat=1.9}
+\usepgfplotslibrary{fillbetween}
 
 \title{Anomaly detection and image classification of glass bottles in manufacturing}
 \author{Mika Pärssinen and Marcus Hammarström}
@@ -16,6 +21,7 @@
 \input{src/introduction.tex}
 \input{src/background.tex}
 \input{src/method.tex}
+\input{src/metrics.tex}
 \input{src/evaluation.tex}
 \input{src/discussion.tex}
 \input{src/conclusion.tex}
