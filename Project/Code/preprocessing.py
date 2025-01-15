@@ -12,6 +12,7 @@ def import_images(dir_path, image_size, categorical_labels=False, to_numpy=False
             image_size=image_size,
             batch_size=batch_size,
             label_mode='categorical'
+
         )
         return data
     else:
