@@ -1,0 +1,44 @@
+\section{Metrics Used For Evaluation}
+
+To evaluate the performance of the autoencoder, the anomaly detection procedure and the CNN-model, several metrics are used. 
+
+\subsection{Autoencoder}
+
+To evaluate how well the autoencoder is able to reconstruct the input data,  Mean Squared Error (MSE), Peak Signal-To-Noise Ratio (PSNR), Structural Similarity Index Measure (SSIM) and a threshold image sum method are used. 
+\par
+MSE takes the avarage of the squared differences between each pixel in the original image and the reconstructed image. PSNR is a metric that express the ratio between the maximum value of each pixel and the MSE. SSIM is a more complex method that considers changes in the structural nature of the images. 
+\par
+The threshold image sum method is a method that first creates a mask of the difference of both images to highlight areas where the difference is significant. The total sum of the mask is then calculated and used as a metric. The idea for this method is to take advantage of the fact that anomalous images should have big differences in specific areas of the original image and reconstructed image.
+
+\subsection{Anomaly detection procedure}
+
+The metrics uses for evaluating our anomaly detection procedure are Reciver Operator Characteristic Area Under the Curve (ROC-AUC), Accuracy and F1-score. ROC-AUC is a metric that evaluates the performance of the model by calculating the area under the curve of the ROC-curve. The ROC-curve is a curve that shows the true positive rate against the false positive rate. Accuracy is a metric that calculates the ratio between the number of correct predictions and the total number of predictions. F1-score is a metric that calculates the mean of precision and recall.
+
+\subsection{CNN-model}
+
+\subsection{Calculating the metrics}
+
+Formulas for some of the metrics are defined as follows:
+
+\begin{align*}
+    \text{MSE} &= \frac{1}{n} \sum_{i=1}^{n} (x_i - \hat{x}_i)^2 \\
+    \text{PSNR} &= 20 \cdot \log_{10} \left( \frac{\text{MAX\_VAL}}{\sqrt{\text{MSE}}} \right) \\
+    \text{SSIM} &= \frac{(2\mu_x\mu_y + c_1)(2\sigma_{xy} + c_2)}{(\mu_x^2 + \mu_y^2 + c_1)(\sigma_x^2 + \sigma_y^2 + c_2)} \\
+    F_1 &= \frac{2TP}{2TP + FP + FN} \\
+    \text{Accuracy} &= \frac{\text{Correct Predictions}}{\text{Total number of images}} \\
+\end{align*}
+
+Thresholded images (masks) are created by applying a threshold function to each pixel of the image. The threshold function is defined as:
+
+\begin{align*}
+    f(x) &= 
+    \begin{cases}
+        \text{max\_val}(x) & \text{if } x > \text{threshold} \\
+        0 & \text{otherwise}
+    \end{cases} 
+\end{align*}
+
+and to calculate the sum of the mask, the values for each pixel and each channel are summed up.
+\par
+The ROC-AUC metric is best illustrated with a figure:
+\input{src/figures/ROCAUC.tex}
