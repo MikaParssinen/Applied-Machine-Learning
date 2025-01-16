@@ -81,7 +81,7 @@ def fit_model(model, images, epochs=25, batch_size=16, callbacks=[]):
     )
     return history
 
-def get_masks(before, after, win_size=9, gaussian_weights=False, threshold=0):
+def get_scores_and_masks(before, after, win_size=9, gaussian_weights=False, threshold=0):
     scores = []
     masks = []
     for (image1, image2) in zip(before, after):
@@ -89,6 +89,7 @@ def get_masks(before, after, win_size=9, gaussian_weights=False, threshold=0):
                                               channel_axis=2, gaussian_weights=gaussian_weights)
         diff = np.clip(diff, a_min=0.0, a_max=1.0)
         scores.append(score)
+        diff = cv2.cvtColor(diff, cv2.COLOR_BGR2GRAY)
         _, mask = cv2.threshold(diff, threshold, 1.0, cv2.THRESH_BINARY)
         masks.append(mask)
     return np.array(scores), np.array(masks)
