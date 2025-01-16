@@ -1,2 +1,7 @@
 \subsection{Image Reconstruction}
 
+There exists a lot of different methods for Image Anomaly Detection (IAD) and these methods can be divided into two main categories: feature-embedding and reconstruction-based \cite{Liu_2024}. This paper uses a reconstruction-based method that uses an autoencoder to reconstruct the input image. 
+\par
+An autoencoder is a special type of neural network that encodes input data into a lower-dimensional representation and then decodes it back to the original input shape. The idea is that the autoencoder learns to reconstruct the input image as accurately as possible. If the input image is normal, the autoencoder should be able to reconstruct the image with a low error. If the input image is anomalous, the autoencoder should not be able to reconstruct the image accurately.
+\par
+The specific type of autoencoder used in this paper is a convolutional autoencoder. A convolutional autoencoder uses convolutional layers from Convolutional Neural Netwroks to encode the data and transpose convolutional layers to decode the data. Using a convolutions allows an autoencoder to learn spatial information in the input data. 
