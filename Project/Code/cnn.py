@@ -7,7 +7,6 @@ def build_cnn_model():
     model = models.Sequential([
         layers.InputLayer(shape=(150, 150, 3)),  # Input shape (150x150x3)
 
-        # Convolutional layers with max pooling
         layers.Conv2D(32, (3, 3), activation='relu', padding='same', strides=(2, 2)),
         layers.MaxPooling2D((2, 2)),
 
@@ -17,13 +16,10 @@ def build_cnn_model():
         layers.Conv2D(128, (3, 3), activation='relu', padding='same', strides=(2, 2)),
         layers.MaxPooling2D((2, 2)),
 
-        # Flatten the output and pass through dense layers
         layers.Flatten(),
         layers.Dense(128, activation='relu'),
-        layers.Dense(4, activation='softmax')  # 4 output units, one for each class (good, bad, contaminated, etc.)
+        layers.Dense(4, activation='softmax')
     ])
-
-    # Compile the model with categorical crossentropy
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
     return model
