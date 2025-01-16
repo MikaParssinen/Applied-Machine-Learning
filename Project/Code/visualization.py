@@ -1,6 +1,9 @@
 import numpy as np
 from matplotlib import pyplot as plt
 import tensorflow as tf
+import seaborn as sns
+
+from sklearn.metrics import f1_score, classification_report, confusion_matrix
 
 def display_before_after(before, after, n=4):
     """Displays n random images from each array."""
@@ -57,3 +60,20 @@ def plot_metrics(history, accuracy=True):
         plt.title('Training and Validation Accuracy')
         plt.legend()
         plt.show()
+
+
+
+def plot_heatmap(y_true, y_pred):
+    """Plots heatmap"""
+    y_true_classes = np.argmax(y_true, axis=1)
+    y_pred_classes = np.argmax(y_pred, axis=1)
+
+    conf_matrix = confusion_matrix(y_true_classes, y_pred_classes)
+
+    plt.figure(figsize=(10, 8))
+    sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=True, yticklabels=True)
+
+    plt.xlabel("Predicted Labels")
+    plt.ylabel("True Labels")
+    plt.title("Confusion Matrix Heatmap")
+    plt.show()
