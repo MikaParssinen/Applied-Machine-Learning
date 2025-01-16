@@ -82,3 +82,18 @@ def add_salt_and_pepper_noise(image, label, salt_prob=0.04, pepper_prob=0.04):
     pepper = random_vals > (1.0 - pepper_prob)
     image = tf.where(pepper, 0.0, image)
     return image, label
+
+def convert_to_numpy(test_data):
+    """Saves labels and images to numpy arrays."""
+    all_labels = []
+    all_images = []
+
+    for images, labels in test_data:
+        all_labels.append(labels.numpy())
+        all_images.append(images.numpy())
+
+    all_labels_np = np.concatenate(all_labels, axis=0)
+    all_images_np = np.concatenate(all_images, axis=0)
+
+    return all_labels_np, all_images_np
+
