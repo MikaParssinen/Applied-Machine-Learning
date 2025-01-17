@@ -15,6 +15,30 @@ The threshold image sum method is a method that first creates a mask of the diff
 The metrics uses for evaluating our anomaly detection procedure are Reciver Operator Characteristic Area Under the Curve (ROC-AUC), Accuracy and F1-score. ROC-AUC is a metric that evaluates the performance of the model by calculating the area under the curve of the ROC-curve. The ROC-curve is a curve that shows the true positive rate against the false positive rate. Accuracy is a metric that calculates the ratio between the number of correct predictions and the total number of predictions. F1-score is a metric that calculates the mean of precision and recall.
 
 \subsection{CNN-model}
+For evaluating the CNN model's performance in classifying bottle images, we use several standard classification metrics, such as: accuracy, precision, recall, and F1-score.
+Accuracy measures the overall correct predictions ratio, while precision indicates the model's ability to identify true positives correctly. 
+Recall shows how well the model identifies all relevant cases, and F1-score provides a balanced measure between precision and recall. Additionally, we use a confusion matrix to visualize the model's performance across all classes, showing how well the model distinguishes between different types of bottles and defects.
+
+\begin{figure}[H]
+    \centering
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \includegraphics[scale=0.25]{src/images/heatmap_metric.png}
+        \vspace{-0.3cm}
+        \caption{Confusion matrix heatmap}
+        \label{fig:heatmap}
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.48\textwidth}
+        \centering
+        \vspace{0.4cm}
+        \includegraphics[scale=0.33]{src/images/cnn_report.png}
+        \vspace{0.2cm}
+        \caption{Classification report}
+        \label{fig:report}
+    \end{minipage}
+\end{figure}
+
 
 \subsection{Calculating the metrics}
 
