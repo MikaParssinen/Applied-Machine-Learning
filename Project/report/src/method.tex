@@ -17,3 +17,36 @@ Additionally, we introduced noise by flipping and rotating images, which simulat
     \caption{Images with Salt and Pepper noise.}
     \label{fig:snpnoise}
 \end{figure}
+
+\subsection{Pipeline}
+
+Our model pipeline consists of two models: a CNN and an Autoencoder. 
+The Autoencoder first detects and highlights anomalies in the input images. These processed images are then fed into the CNN, which classifies them into one of our four possible classes.
+The pipeline outputs both the processed image with highlighted anomalies and its corresponding classification label, providing great analysis of bottle defects.
+
+\subsubsection{Implemention of the CNN}
+The CNN model is implemented using TensorFlow's Sequential API with the following architecture:
+\vspace{0.3cm}
+\begin{python}
+model = models.Sequential([
+    layers.InputLayer(shape=(150, 150, 3)), 
+    layers.Conv2D(32, (3, 3), activation='relu', padding='same', strides=(2, 2)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(64, (3, 3), activation='relu', padding='same', strides=(2, 2)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Conv2D(128, (3, 3), activation='relu', padding='same', strides=(2, 2)),
+    layers.MaxPooling2D((2, 2)),
+    layers.Flatten(),
+    layers.Dense(128, activation='relu'),
+    layers.Dense(4, activation='softmax')
+])
+model.compile(
+    optimizer='adam',
+    loss='categorical_crossentropy',
+    metrics=['accuracy']
+)
+\end{python}
+
+The model consists of three convolutional layers, each followed by max pooling layers, and two dense layers for classification. The input images are 150x150 pixels with 3 color channels.
+\subsubsection{Implemention of the Autoencoder}
+
