@@ -2,6 +2,7 @@ import preprocessing
 import numpy as np
 import cv2
 
+from sklearn.model_selection import train_test_split
 from skimage.metrics import structural_similarity
 from tensorflow.keras.layers import Input, Conv2D, BatchNormalization, MaxPooling2D, Flatten, Dense, Reshape, Conv2DTranspose
 from tensorflow.keras.optimizers import Adam
@@ -33,21 +34,42 @@ def create_image_dataset(dir_path, image_size):
 
     return images
 
-def preprocess_images(images):
+def preprocess_images(images, labels):
     images = preprocessing.normalize_images(images)
 
     # Create new images by mirroring the images in both axis
     x_mirrored = preprocessing.mirror_images(images, 0)
     y_mirrored = preprocessing.mirror_images(images, 1)
     images = np.concatenate((images, x_mirrored, y_mirrored))
+    labels = np.concatenate((labels, labels, labels))
 
     # Create new images by rotating the images 90, 180 and 270 degrees
     rotated_90 = preprocessing.rotate_all_90(images)
     rotated_180 = preprocessing.rotate_all_90(rotated_90)
     rotated_270 = preprocessing.rotate_all_90(rotated_180)
     images = np.concatenate((images, rotated_90, rotated_180, rotated_270))
+    labels = np.concatenate((labels, labels, labels, labels))
 
-    return images
+    return images, labels
+
+def get_training_and_threshold_set(X_train, y_train):
+    normal_images = []
+    anomaly_images = []
+    labels = np.argmax(y_train, axis=1)
+
+    length = len(X_train)
+
+    for i in range(length):
+        if labels[i] == 3:
+            normal_images.append(X_train[i])
+        else:
+            anomaly_images.append(X_train[i])
+
+    anomaly_images = np.array(anomaly_images)
+    normal_images = np.array(normal_images)
+    normal_train, normal_test = train_test_split(normal_images, test_size=0.2)
+
+    return normal_train, normal_test, anomaly_images
 
 def build_and_compile(image_size):
     encoder_input = Input(shape=(image_size[0], image_size[1], 3))
