@@ -29,6 +29,7 @@ This could result in varying model performance between a controlled environment 
 
 Also the data we have is considered \textbf{small data}, which limits our model performance. 
 Because, machine learning models generally perform better with larger datasets, and the limited data available may not capture all the variations and anomalies that occur in a real production environment.
+This small data also suffers from \textbf{overrepresentation in a class} the overrepresentated class is the good class, which could lead to a bias in the model. 
 
 Another limitation is the introduction of \textbf{fake noise} in the data.
 While we have simulated noise in the data, real noise in a factory setting would include factors such as dust and dirt on the camera lens. 
@@ -40,6 +41,9 @@ This could lead to the model being less effective at detecting rare or unexpecte
 Finally, the \textbf{contamination is clearly fabricated}.
 This could result in the model learning to detect these fabricated patterns rather than genuine anomalies, reducing its effectiveness in a real production environment.
 
+över represent i good klassen.
+
+Allt är inte vissuelt.
 \subsection{Results}
 
 \subsection{Future work}

@@ -77,3 +77,45 @@ def plot_heatmap(y_true, y_pred):
     plt.ylabel("True Labels")
     plt.title("Confusion Matrix Heatmap")
     plt.show()
+
+
+def plot_images_w_pred_n_true(anomaly_images, anomaly_labels, predictions):
+    class_names = {
+        0: "Broken Large",
+        1: "Broken Small",
+        2: "Contaminated",
+        3: "Good"
+    }
+    rows = 2
+    cols = 5
+    y_pred = np.argmax(predictions, axis=1)
+    y_true = np.argmax(anomaly_labels, axis=1)
+
+    total_images = len(anomaly_images)
+
+    for batch_start in range(0, total_images, rows * cols):
+        batch_end = min(batch_start + rows * cols, total_images)
+        num_subplots = batch_end - batch_start
+
+        fig, axes = plt.subplots(rows, cols, figsize=(cols * 3, rows * 3))  # Create grid
+
+        for i in range(num_subplots):
+            row = i // cols
+            col = i % cols
+            img_index = batch_start + i  # Actual index in anomaly_images
+
+            pred_label = class_names.get(y_pred[img_index], "Unknown")
+            true_label = class_names.get(y_true[img_index], "Unknown")
+
+            axes[row, col].imshow(anomaly_images[img_index])
+            axes[row, col].axis('off')
+            axes[row, col].set_title(f"Pred: {pred_label}\nTrue: {true_label}")
+
+        # Hide any empty subplots (only needed if the last batch has < rows * cols images)
+        for j in range(num_subplots, rows * cols):
+            fig.delaxes(axes.flatten()[j])
+
+        plt.tight_layout()
+        plt.show()
+
+
