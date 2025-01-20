@@ -8,7 +8,7 @@ Leading the factory to make better decisions, for example recycle the broken bot
 Traditionally, factories have a worker that stands by the production line, sometimes for only parts of the day or, at other times, for the entire day. 
 The worker manually visually inspect the bottles which not only cost a lot of money in salary but also will bottleneck the whole production of bottles.
 A human can simply not keep track of the hundreds of bottles that the factory produces, humans are slow and error prone to this kind of work, while not mentioning how boring the work must be. 
-This solution dose not satisfy the external expectations, a different monitor solution must exist.
+This solution does not satisfy the external expectations, a different monitor solution must exist.
 \par
 Monitoring with cameras, by incorporating automated monitor systems in the production line, such as cameras. 
 With the camera, the output feed can be used as input data in a machine learning algorithm. 
@@ -23,3 +23,14 @@ Broken bottles can be sent of to recycling that means the factory will reduce wa
 \par
 This report will show the implementation of machine learning algorithms, evaluate the effectiveness of identifying defect bottles and also discuss the results of each algorithm.
 Additionally, mention limitations, challenges and ethical considerations of these technologies.
+
+\subsection{Research questions}
+
+\begin{itemize}
+    \item Given an input image $X$, can we accurately classify the image as either normal or anomalous?
+    \item Given an anomalous image $X$, can we accurately classify the type of anomaly?
+\end{itemize}
+
+\subsection{Hypothesis}
+
+Our hypothesis is that we can classify normal and anomalous images well, as well as classify the type of anomaly. We are however somewhat concerned with the small dataset we have at our disposal. Even with a relatively small dataset, the amount of ``normal'' image data is significantly larger than the amount of anomalous data. 
