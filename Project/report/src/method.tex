@@ -1,20 +1,62 @@
 \section{Method}
 
 \subsection{Machine learning pipeline}
-Opt 1:
-\par
 To solve the problem of anomaly detection and image classification, a machine learning pipeline has been developed. The pipeline consists of a anomaly detection procedure that use an autoencoder to reconstruct an input image, calculate the reconstruction error and make a decision based on the error. Images that the anomaly detection procedure considers as anomalies are then passed to a CNN to classify the anomaly. The pipeline is visualized in figure \ref{fig:ml_pipeline}.
 \input{src/figures/ml_pipeline.tex}
-\par
-Opt 2:
-\par
-Our model pipeline consists of two models: a CNN and an Autoencoder. 
-The Autoencoder first detects and highlights anomalies in the input images. These processed images are then fed into the CNN, which classifies them into one of our four possible classes.
-The pipeline outputs both the processed image with highlighted anomalies and its corresponding classification label, providing great analysis of bottle defects.
 
 \subsection{Autoencoder}
+In order to reconstruct the original images we used a convolutional autoencoder. This type of autoencoder is well suited for image data as it can capture spatial information and learn hierarchical features. 
+
+\subsubsection{Data preparation and Augmentation}
+
+To train our autoencoder, we sort out the normal images from the dataset and use them as training data. We also create more training data by mirroring each image on the x-axis and also on the y-axis. Each one of the original images and the mirrored images are then rotate first 90 degrees, then 180 degrees and finally 270 degrees. This results in each original image getting transformed into 12 total different images.
+
+\subsubsection{Implemention}
+
+The autoencoder is implemented using TensorFlow Keras Model API with the following architecture:
+\vspace{0.3cm}
+\begin{python}
+encoder_input = Input(shape=(image_size[0], image_size[1], 3))
+
+# Encoding layers
+x = Conv2D(32, (3, 3), activation="relu", padding="same")(encoder_input)
+x = BatchNormalization()(x)
+x = MaxPooling2D((2, 2), padding="same")(x)
+x = Conv2D(32, (3, 3), activation="relu", padding="same")(x)
+x = BatchNormalization()(x)
+x = MaxPooling2D((2, 2), padding="same")(x)
+x = Conv2D(32, (3, 3), activation="relu", padding="same")(x)
+
+encoded_shape = x.shape[1:]
+
+# Flatten layers
+x = Flatten()(x)
+flat_length = x.shape[1]
+x = Dense(1024, activation="relu")(x)
+x = Dense(flat_length, activation="relu")(x)
+x = Reshape(encoded_shape)(x)
+
+# Decoding layers
+x = Conv2DTranspose(32, (3, 3), strides=2, activation="relu", padding="same")(x)
+x = Conv2DTranspose(32, (3, 3), strides=2, activation="relu", padding="same")(x)
+x = Conv2D(3, (3, 3), activation="sigmoid", padding="same")(x)
+\end{python}
+
+Three different convolutional layers, each followed by max pooling layers, are used to encode the input images. The encoded shape is then flattened and passed through two dense layers before reshaping it back to the encoded shape. The decoding layers consist of two transposed convolutional layers and a final convolutional layer that outputs the reconstructed image.
+\par
+We use ``ReLU'' as the activation function for each convolutional and dense layer, except for the final convolutional layer, where we use the ``Sigmoid'' activation function. 
+\par
+To compile the model, we use the ``Adam'' optimizer with a learning rate of $0.0005$ and mean-squared error as the loss function. We also define two different callback-functions that monitors validation loss:
+\begin{python}
+reduce_lr = ReduceLROnPlateau(monitor="val_loss", factor=0.2, patience=3, min_delta=0.0005)
+early_stop = EarlyStopping(monitor="val_loss", patience=5, min_delta=0.0002, restore_best_weights=True)
+\end{python}
 
 \subsection{Anomaly detection procedure}
+
+Our design of a anomaly detection is based around the reconstruction error of the autoencoder. To measure reconstruction we use the same method as for our loss function in training the autoencoder, mean-squared error. To set a threshold for when an image is to be consider an anomaly, we calculate the mean-squared error for normal images and also for anomalies. We then set the avarage value of the highest mse of the normal images and the lowest value for the anomalies as the threshold.
+\par
+When the autoencoder is trained and the threshold is set, we make predictions on test data that the autoencoder has not seen before. If the mse of an image is above the threshold, we consider it an anomaly and pass it to the CNN for classification.
 
 \subsection{CNN}
 
@@ -36,7 +78,7 @@ Additionally, we introduced noise by flipping and rotating images, which simulat
     \label{fig:snpnoise}
 \end{figure}
 
-\subsubsection{Implemention of the CNN} % Ha denna under CNN-section och bara kalla Implementation?
+\subsubsection{Implemention}
 The CNN model is implemented using TensorFlow's Sequential API with the following architecture:
 \vspace{0.3cm}
 \begin{python}
