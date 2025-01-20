@@ -4,11 +4,9 @@ To evaluate the performance of the autoencoder, the anomaly detection procedure 
 
 \subsection{Autoencoder}
 
-To evaluate how well the autoencoder is able to reconstruct the input data,  Mean Squared Error (MSE), Peak Signal-To-Noise Ratio (PSNR), Structural Similarity Index Measure (SSIM) and a threshold image sum method are used. 
+To evaluate how well the autoencoder is able to reconstruct the input data,  Mean Squared Error (MSE), Peak Signal-To-Noise Ratio (PSNR) and Structural Similarity Index Measure (SSIM).
 \par
 MSE takes the avarage of the squared differences between each pixel in the original image and the reconstructed image. PSNR is a metric that express the ratio between the maximum value of each pixel and the MSE. SSIM is a more complex method that considers changes in the structural nature of the images. 
-\par
-The threshold image sum method is a method that first creates a mask of the difference of both images to highlight areas where the difference is significant. The total sum of the mask is then calculated and used as a metric. The idea for this method is to take advantage of the fact that anomalous images should have big differences in specific areas of the original image and reconstructed image.
 
 \subsection{Anomaly detection procedure}
 
@@ -54,17 +52,5 @@ Formulas for some of the metrics are defined as follows:
     \text{Accuracy} &= \frac{\text{Correct Predictions}}{\text{Total number of images}} \\
 \end{align*}
 
-Thresholded images (masks) are created by applying a threshold function to each pixel of the image. The threshold function is defined as:
-
-\begin{align*}
-    f(x) &= 
-    \begin{cases}
-        \text{max\_val}(x) & \text{if } x > \text{threshold} \\
-        0 & \text{otherwise}
-    \end{cases} 
-\end{align*}
-
-and to calculate the sum of the mask, the values for each pixel and each channel are summed up.
-\par
 The ROC-AUC metric is best illustrated with a figure:
 \input{src/figures/ROCAUC.tex}
