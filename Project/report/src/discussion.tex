@@ -24,11 +24,21 @@ This includes maintaining employment opportunities while adapting to technologic
 
 \subsection{Limitations}
 
-• Inte riktig data
-• Fake noise, riktigt noise skulle vara damm och smuts på linsen tex.
-• Liten mängd data
-• Saknar verklighetskoppling till alla anomalies
-• Kontaminering är tydligt fabrikerade
+Our primary limitation is that we use \textbf{synthetic data} which means that the data is not real, it is synthetically made.
+This could result in varying model performance between a controlled environment and a real-world setting.
+
+Also the data we have is considered \textbf{small data}, which limits our model performance. 
+Because, machine learning models generally perform better with larger datasets, and the limited data available may not capture all the variations and anomalies that occur in a real production environment.
+
+Another limitation is the introduction of \textbf{fake noise} in the data.
+While we have simulated noise in the data, real noise in a factory setting would include factors such as dust and dirt on the camera lens. 
+This type of noise could significantly impact the model's accuracy and robustness.
+
+Additionally, the data used lacks \textbf{all real anomalies}, meaning it does not fully represent all possible anomalies that could occur in a real-world scenario. 
+This could lead to the model being less effective at detecting rare or unexpected defects.
+
+Finally, the \textbf{contamination is clearly fabricated}.
+This could result in the model learning to detect these fabricated patterns rather than genuine anomalies, reducing its effectiveness in a real production environment.
 
 \subsection{Results}
 
