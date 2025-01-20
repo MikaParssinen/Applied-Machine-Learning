@@ -1,3 +1,9 @@
 \begin{abstract}
-    Lorem ipsum
+    To reduce cost, reduce waste and make production more efficient, it is important to find reliable methods of automating the task of detecting anomalies in production lines. A lot of research has been done both on the task of anomaly detection and image-classification with varying approaches. Our paper provides a proof of concept for a machine learning pipeline that can detect anomalies in images as well as classifying these anomalies. 
+    \par
+    Our models are trained on a dataset of bottles that have been photographed from above. The dataset contains images without defect which are considered ``normal'' and anomalous images in three different categories: ``broken\_small'', ``broken\_large'' and ``contaminated''.
+    \par
+    The pipeline we propose consists of an autoencoder to reconstruct images, an anomaly detection procedure that uses reconstruction error to classify anomalies and finally a CNN-model that is used to specify the type of anomaly that has been detected. 
+    \par
+    This paper shows that, even with a limited dataset, anomalies can be detected and classified with high accuracy. 
 \end{abstract}
