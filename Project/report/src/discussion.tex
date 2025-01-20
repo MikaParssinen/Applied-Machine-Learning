@@ -24,12 +24,32 @@ This includes maintaining employment opportunities while adapting to technologic
 
 \subsection{Limitations}
 
-• Inte riktig data
-• Fake noise, riktigt noise skulle vara damm och smuts på linsen tex.
-• Liten mängd data
-• Saknar verklighetskoppling till alla anomalies
-• Kontaminering är tydligt fabrikerade
+Our primary limitation is that we use \textbf{synthetic data} which means that the data is not real, it is synthetically made.
+This could result in varying model performance between a controlled environment and a real-world setting.
+
+Also the data we have is considered \textbf{small data}, which limits our model performance. 
+Because, machine learning models generally perform better with larger datasets, and the limited data available may not capture all the variations and anomalies that occur in a real production environment.
+
+Another limitation is the introduction of \textbf{fake noise} in the data.
+While we have simulated noise in the data, real noise in a factory setting would include factors such as dust and dirt on the camera lens. 
+This type of noise could significantly impact the model's accuracy and robustness.
+
+Additionally, the data used lacks \textbf{all real anomalies}, meaning it does not fully represent all possible anomalies that could occur in a real-world scenario. 
+This could lead to the model being less effective at detecting rare or unexpected defects.
+
+Finally, the \textbf{contamination is clearly fabricated}.
+This could result in the model learning to detect these fabricated patterns rather than genuine anomalies, reducing its effectiveness in a real production environment.
 
 \subsection{Results}
 
 \subsection{Future work}
+There exist several potential improvements and extensions to our current model. 
+First of all, more architectures could be tested, such as different CNN configurations and advanced autoencoder structures. 
+The number of layers, filter sizes, and activation functions could be be tested to achieve better performance, which would involve additional computational power.
+
+Deep learning approaches like ResNet or U-Net architectures could be explored for both the anomaly detection and classification tasks.
+Data augmentation techniques could be expanded beyond our current implementation of noise, flips, and rotations. This could include varying lighting conditions, different camera angles, and simulated environmental factors that better represent real factory conditions.
+
+Finally, the most significantly and obvious improvement would be implementing the model in a real production line. 
+This would allow us to collect authentic data, including actual defects and environmental conditions. 
+Real-world testing would give us valuable insights into the model's performance and help identify flaws in our current model.
