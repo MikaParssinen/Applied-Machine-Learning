@@ -42,14 +42,14 @@ def plot_img(train_data, class_names):
         plt.show()
 
 
-def plot_metrics(history, accuracy=True):
+def plot_metrics(history, model_type, accuracy=True):
     """Displays metrics plots of history."""
     # Plot traning and validation loss
     plt.figure(figsize=(12, 5))
     plt.subplot(1, 2, 1)
     plt.plot(history.history['loss'], label='Training Loss')
     plt.plot(history.history['val_loss'], label='Validation Loss')
-    plt.title('Training and Validation Loss')
+    plt.title(f'{model_type} Training and Validation Loss')
     plt.legend()
 
     if accuracy:
@@ -57,7 +57,7 @@ def plot_metrics(history, accuracy=True):
         plt.subplot(1, 2, 2)
         plt.plot(history.history['accuracy'], label='Training Accuracy')
         plt.plot(history.history['val_accuracy'], label='Validation Accuracy')
-        plt.title('Training and Validation Accuracy')
+        plt.title(f'{model_type} Training and Validation Accuracy')
         plt.legend()
         plt.show()
 

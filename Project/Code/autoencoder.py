@@ -33,6 +33,21 @@ def create_image_dataset(dir_path, image_size):
 
     return images
 
+def preprocess_images(images):
+    images = preprocessing.normalize_images(images)
+
+    # Create new images by mirroring the images in both axis
+    x_mirrored = preprocessing.mirror_images(images, 0)
+    y_mirrored = preprocessing.mirror_images(images, 1)
+    images = np.concatenate((images, x_mirrored, y_mirrored))
+
+    # Create new images by rotating the images 90, 180 and 270 degrees
+    rotated_90 = preprocessing.rotate_all_90(images)
+    rotated_180 = preprocessing.rotate_all_90(rotated_90)
+    rotated_270 = preprocessing.rotate_all_90(rotated_180)
+    images = np.concatenate((images, rotated_90, rotated_180, rotated_270))
+
+    return images
 
 def build_and_compile(image_size):
     encoder_input = Input(shape=(image_size[0], image_size[1], 3))

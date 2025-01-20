@@ -4,8 +4,26 @@ from matplotlib.pyplot import axis
 import tensorflow as tf
 from tensorflow.keras.preprocessing import image_dataset_from_directory
 
-def import_images(dir_path, image_size, categorical_labels=False, to_numpy=False, batch_size=None, dataset=False):
+def get_dataset(dir_path, image_size):
+    images = []
+    labels = []
+    data = image_dataset_from_directory(
+        dir_path,
+        labels="inferred",
+        image_size=image_size,
+        batch_size=None,
+        label_mode='categorical'
+    )
+    for image, label in data.take(-1):
+        images.append(image)
+        labels.append(label)
 
+    X = np.array(images)
+    y = np.array(labels)
+
+    return X, y
+
+def import_images(dir_path, image_size, categorical_labels=False, to_numpy=False, batch_size=None, dataset=False):
     if dataset:
         data = image_dataset_from_directory(
             dir_path,
@@ -25,6 +43,8 @@ def import_images(dir_path, image_size, categorical_labels=False, to_numpy=False
             )
             if to_numpy:
                 return np.array(list(images.as_numpy_iterator())), labels
+            else:
+                return images, labels
         else:
             images = image_dataset_from_directory(
                 dir_path,
