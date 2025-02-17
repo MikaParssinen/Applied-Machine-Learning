@@ -60,6 +60,4 @@ The report should be a maximum of **4 pages** and cover the following:
 - **Performance Discussion**  
   Discuss the performance of the algorithms, including limitations, impact of hyperparameter values, etc.
 
-**File Naming Convention**: Save both the code and report as `DVA263_INL2_Group_Id`.
-
 ---
