@@ -1,7 +1,5 @@
 # Assignment 2: Problem Solving with Unsupervised Learning
 
-**Due Date**: December 16, 2024, 23:59  
-
 ### Overview
 
 The assignment assesses your understanding of applying and evaluating the performance of unsupervised machine learning algorithms. For this task, we will use the **Market Segmentation dataset** to develop unsupervised learning models that offer recommendations such as saving plans, loans, and wealth management options for targeted customer groups.
