@@ -1,7 +1,5 @@
 # Assignment 1: Comparison of the Performance of Different Supervised Models
 
-**Due Date**: December 2, 2024, 23:59  
-
 ### Overview
 
 This assignment evaluates our understanding of applying and comparing the performances of various supervised machine learning algorithms. For this task, you will use the **FIFA 18 players database** to develop and analyze machine learning models, focusing on **Naive Bayes Classifiers**, **Random Forest**, and **Support Vector Machines**.
