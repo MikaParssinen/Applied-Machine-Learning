@@ -1,7 +1,5 @@
 # Project (PRO1): Machine Learning Project
 
-**Deadline:** Monday, January 13, 2025, 23:59
-
 ## Objective
 
 The objective of this assignment is to gain hands-on experience in solving a machine learning problem.
@@ -58,9 +56,3 @@ Your technical report should be approximately **2750–4450 words** and must inc
 
 ---
 
-## Submission Instructions
-
-- **Upload Requirements:**
-  - Submit both the project work and the report.
-  - The report file must be named: `DVA263_PRO1_Group_Id`.
-- If sharing via GitHub or Google Colab, ensure all required components are included.
