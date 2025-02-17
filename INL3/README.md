@@ -1,39 +1,41 @@
-# Applied Machine Learning
+# Neural Networks and Deep Learning Assignment (INL3)
 
-### Useful Links
-- [Canvas](https://canvas.mdu.se/courses/15513)
+## Assignment Overview
+This assignment focuses on developing and evaluating Neural Networks and Deep Learning algorithms for image classification using the MNIST handwritten digits database.
 
-- [Course literature](https://www.rasa-ai.com/wp-content/uploads/2022/02/Aurélien-Géron-Hands-On-Machine-Learning-with-Scikit-Learn-Keras-and-Tensorflow_-Concepts-Tools-and-Techniques-to-Build-Intelligent-Systems-O’Reilly-Media-2019.pdf)
+## Dataset
+- **Database**: MNIST handwritten digits
+- **Training set**: 60,000 examples
+- **Test set**: 10,000 samples
+- **Image size**: 28x28 pixels
+- **Access**: Available through tensorflow.keras.datasets
 
----
+## Tasks
+1. Feature extraction from images
+2. Network architecture development
+3. Model performance evaluation
+4. Code and report submission
 
-### Course Content
-- **Module 1**: Learning from Data
-- **Module 2**: Representing Data and Features
-- **Module 3**: Supervised Machine Learning – Naive Bayes Classifiers, Ensembles of Decision Trees (Random Forests), and Support Vector Machines
-- **Module 4**: Neural Networks and Deep Learning
-- **Module 5**: Unsupervised Machine Learning – PCA, t-SNE, Agglomerative Clustering, and DBSCAN
-- **Module 6**: Model Evaluation, Improvement, and Ethical Aspects
+## Report Requirements
+### Length
+- Maximum 4 pages
 
----
+### Content Requirements
+1. Implementation Approach
+   - Problem formulation
+   - Training and test data sampling methodology
+   - Feature transformation process description
+   - Neural network and deep learning architecture details
+     - Parameters
+     - Hyperparameters
+   - Evaluation metrics selection and justification
 
-### Assignments and Projects
+2. Results
+   - Presentation through tables and graphs
+   - Summary of findings
 
-- **Written Assignment (INL1)**  
-  *Comparison of the performance of different supervised models*  
-  **Credits**: 1.5  
-
-- **Written Assignment (INL2)**  
-  *Problem solving with unsupervised learning*  
-  **Credits**: 1  
- 
-- **Written Assignment (INL3)**  
-  *Neural Networks and Deep Learning*  
-  **Credits**: 2  
-
-- **Project (PRO1)**  
-  *Project Report*  
-  **Credits**: 3
-
----
+3. Performance Discussion
+   - Approach limitations
+   - Hyperparameter impact analysis
+   - Overall performance evaluation
 
